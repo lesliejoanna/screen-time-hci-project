@@ -104,3 +104,8 @@ section h2 {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* Login Screen */
+.login-container {
+    padding: 20px;
+}

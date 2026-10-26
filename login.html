@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Screen Time Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Screen Time Manager</h1>
+    </header>
+
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <div class="login-options">
+            <button id="parent-btn" class="active" type="button">Parent</button>
+            <button id="child-btn" type="button">Child</button>
+        </div>
+
+        <form id="login-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+
+            <div id="password-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" id="login-submit">Log In</button>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
