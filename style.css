@@ -106,6 +106,47 @@ section h2 {
 }
 
 /* Login Screen */
+
 .login-container {
+    width: calc(100% - 40px);
+    max-width: 400px;
+    margin: 20px auto;
     padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.login-options button {
+    flex: 1;
+    min-height: 44px;
+}
+
+#login-form,
+#password-container {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+#password-container.hidden {
+display: none;
+}
+
+#login-form input {
+box-sizing: border-box;
+width: 100%;
+min-height: 44px;
+padding: 10px 12px;
+margin-bottom: 12px;
+}
+
+#login-submit {
+width: 100%;
+min-height: 44px;
+margin-top: 8px;
 }

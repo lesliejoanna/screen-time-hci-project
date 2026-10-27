@@ -3,50 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Time Manager</title>
+    <title>Welcome - Screen Time Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <h1>Screen Time Manager</h1>
     </header>
-
-    <main>
-        <nav>
-            <button>Controls</button>
-            <button>Routines</button>
-            <button>Setup</button>
-        </nav>
-
+    <main class="welcome-page">
         <section>
-            <h2>Parent Controls</h2>
-            <button id="grant-reward">Grant Reward</button>
-            <button>Custom Reward</button>
-        </section>
-
-        <section>
-            <h2>Child Status</h2>
-            <p>Homework: Completed</p>
-            <p>Status: Locked</p>
+            <h2>Build healthy screen time habits together</h2>
+            <p>Screen Time Manager helps families keep track of homework, manage screen time, and celebrate completed tasks with rewards.</p>
+            <h3>For parents</h3>
+            <p>Check your child's status and choose rewards, such as extra play time or access to an app, after checking their homework.</p>
+            <h3>For children</h3>
+            <p>View your homework status and screen time information from your own dashboard.</p>
+            <a class="sign-in-link" href="login.html">Sign In</a>
         </section>
     </main>
-<div id="reward-screen" class="hidden">
-    <h2>Grant Privilege</h2>
-    <p>Select reward allowance</p>
-
-    <div class="reward-options">
-        <button class="reward-option" data-reward="15 minutes">+15 mins play</button>
-        <button class="reward-option" data-reward="30 minutes">+30 mins play</button>
-        <button class="reward-option" data-reward="Unlock app">Unlock app</button>
-    </div>
-
-    <p>Verified: Homework checked by parent</p>
-    <p id="selected-reward">No reward selected</p>
-
-    <button id="confirm-reward" disabled>Confirm</button>
-    <button id="back-dashboard">Back</button>
-</div>
-    <script src="script.js"></script>
 </body>
 </html>

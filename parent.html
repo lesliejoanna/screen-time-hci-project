@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Screen Time Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Screen Time Manager</h1>
+    </header>
+
+    <main>
+        <nav>
+            <button>Controls</button>
+            <button>Routines</button>
+            <button>Setup</button>
+        </nav>
+
+        <section>
+            <h2>Parent Controls</h2>
+            <button id="grant-reward">Grant Reward</button>
+            <button>Custom Reward</button>
+        </section>
+
+        <section>
+            <h2>Child Status</h2>
+            <p>Homework: Completed</p>
+            <p>Status: Locked</p>
+        </section>
+    </main>
+<div id="reward-screen" class="hidden">
+    <h2>Grant Privilege</h2>
+    <p>Select reward allowance</p>
+
+    <div class="reward-options">
+        <button class="reward-option" data-reward="15 minutes">+15 mins play</button>
+        <button class="reward-option" data-reward="30 minutes">+30 mins play</button>
+        <button class="reward-option" data-reward="Unlock app">Unlock app</button>
+    </div>
+
+    <p>Verified: Homework checked by parent</p>
+    <p id="selected-reward">No reward selected</p>
+
+    <button id="confirm-reward" disabled>Confirm</button>
+    <button id="back-dashboard">Back</button>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

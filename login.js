@@ -31,7 +31,7 @@ loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (userType === "parent") {
-        window.location.href = "index.html";
+        window.location.href = "parent.html";
     } else {
         window.location.href = "child.html";
     }
