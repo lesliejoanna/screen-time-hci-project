@@ -28,8 +28,51 @@
         <section>
             <h2>My Tasks</h2>
             <p>Homework: Completed</p>
-            <p>Rewards Earned: 15 minutes</p>
+            <p>Rewards Earned: See My Rewards below</p>
+        </section>
+
+        <section>
+            <h2>My Rewards</h2>
+
+            <p id="reward-message">
+                No rewards available yet.
+            </p>
+
+            <div id="reward-content" class="hidden">
+                <p id="reward-description"></p>
+
+                <a id="reward-link"
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden">
+                    Open YouTube
+                </a>
+            </div>
         </section>
     </main>
+
+    <script>
+        const savedReward = localStorage.getItem("childReward");
+
+        const rewardMessage = document.getElementById("reward-message");
+        const rewardContent = document.getElementById("reward-content");
+        const rewardDescription = document.getElementById("reward-description");
+        const rewardLink = document.getElementById("reward-link");
+
+        if (savedReward) {
+            rewardMessage.textContent = "Your parent approved a reward!";
+            rewardContent.classList.remove("hidden");
+
+            if (savedReward === "Unlock app") {
+                rewardDescription.textContent = "YouTube is now unlocked!";
+                rewardLink.classList.remove("hidden");
+            } else {
+                rewardDescription.textContent =
+                    `You received: ${savedReward}`;
+            }
+        }
+    </script>
+
 </body>
 </html>

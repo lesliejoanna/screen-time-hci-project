@@ -30,3 +30,19 @@ document.getElementById("back-dashboard").addEventListener("click", () => {
     rewardScreen.classList.add("hidden");
     dashboard.classList.remove("hidden");
 });
+
+confirmButton.addEventListener("click", () => {
+    if (!selectedReward) {
+        return;
+    }
+
+    localStorage.setItem("childReward", selectedReward);
+
+    rewardScreen.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+})
+
+document.getElementById("reset-demo").addEventListener("click", () => {
+    localStorage.removeItem("childReward");
+    alert("Demo reset! Child rewards cleared.");
+});
