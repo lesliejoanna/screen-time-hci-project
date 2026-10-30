@@ -1,2 +1,2 @@
 //Local storage for daily routines
-localStorage.setItem("Name", name);
+localStorage.setItem("Routine Name", "Morning Routine");
