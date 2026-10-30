@@ -151,25 +151,49 @@ min-height: 44px;
 margin-top: 8px;
 }
 
-/* Routines list section */
-#routine-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 
-    position: absolute;
+
+/* Routines list section */
+#routine-list
+{
     width: 1043px;
     height: 348px;
     left: 352px;
     top: 301px;
 
-    background: #D9D9D9;
+    background: #d9d9d9;
 }
 
+#routine-list-name-font
+{
+    width: 503px;
+    height: 77px;
+    left: 385px;
+    top: 340px;
 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 77px;
 
+    color: #000000;
+}
 
+#routine-list-active-font
+{
+    width: 242px;
+    height: 77px;
+    left: 1080px;
+    top: 338px;
 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 77px;
 
+    color: #14AE5C;
+}
 
 
