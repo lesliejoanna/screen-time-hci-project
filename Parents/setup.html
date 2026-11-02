@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Screen Time Manager</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Screen Time Manager</h1>
+    </header>
+
+    <main>
+        <nav>
+            <button onclick="window.location.href='controls.html'">Controls</button>
+            <button onclick="window.location.href='routines.html'">Routines</button>
+            <button onclick="window.location.href='setup.html'">Setup</button>
+            <button type="button" data-logout>Log Out</button>
+        </nav>
+
+        <section>
+            <h2>Whitelisted Websites & Applications</h2>
+            <button>Duolingo</button>
+            <button>YouTube Kids</button>
+            <button>Minecraft</button>
+            <button>Cool Math Games</button>
+            <button>Add New Website</button>
+            <button id="reset-demo">Reset Demo</button>
+            <button id="next-button">Next</button>
+        </section>
+
+
+    </main>
+
+    <div id="hours-screen" class="hidden">
+        <h2>Set Active Hours</h2>
+        <p>Select reward timeslots</p>
+
+        <div class="reward-options">
+            <button class="time-option">Time Slot #1</button>
+            <button class="time-option">Time Slot #2</button>
+            <button class="time-option">Time Slot #3</button>
+            <button class="time-option">Time Slot #4</button>
+        </div>
+
+    </div>
+
+    <script src="../Javascripts/script.js"></script>
+    <script src="../Javascripts/login.js"></script>
+</body>
+
+</html>

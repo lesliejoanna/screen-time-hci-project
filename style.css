@@ -194,3 +194,24 @@ margin-top: 8px;
     color: #16723b;
 }
 
+/* Sandbox Setup section*/
+section {
+    position: relative;
+}
+
+#next-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#hours-screen {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#hours-screen.hidden {
+    display: none;
+}
