@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Screen Time Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Screen Time Manager</h1>
+    </header>
+
+    <div class="login-container">
+        <h2>Create Account</h2>
+
+        <div class="login-options">
+            <button id="parent-btn" class="active" type="button">Parent</button>
+            <button id="child-btn" type="button">Child</button>
+        </div>
+
+        <form id="signup-form" novalidate>
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Choose a username">
+
+            <div id="signup-passwords">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="At least 6 characters">
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Enter password again">
+            </div>
+
+            <p id="signup-error" class="form-error hidden" role="alert"></p>
+
+            <button type="submit" id="signup-submit">Create Account</button>
+        </form>
+
+        <p class="form-link">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+
+    <script src="Javascripts/accounts.js"></script>
+    <script src="Javascripts/signup.js"></script>
+</body>
+</html>
