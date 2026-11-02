@@ -14,25 +14,25 @@
     <header>
         <h1>Screen Time Manager</h1>
     </header>
-<main>
+<main class="routines-page">
         <nav>
             <button onclick="window.location.href='controls.html'">Controls</button>
             <button onclick="window.location.href='routines.html'">Routines</button>
             <button onclick="window.location.href='setup.html'">Setup</button>
-            <button onclick="window.location.href='../login.html'">Log Out</button>
+            <button type="button" data-logout>Log Out</button>
         </nav>
 
         <section>
             <h2>Daily Routines</h2>
             <div id="routine-list">
-                <div id="routine-list-name-font">Morning Routine</div>
-                <div id="routine-list-name-font">After School</div>
-                <div id="routine-list-active-font">Active</div>
+                <div class="routine-name">Morning Routine</div>
+                <div class="routine-name">After School</div>
+                <div class="routine-status">Active</div>
             </div>
         </section>
 
     </main>
-    <script src="Javascripts/script.js"></script>
-    <script src="Javascripts/routines.js"></script>
+    <script src="../Javascripts/daily_routines.js"></script>
+    <script src="../Javascripts/login.js"></script>
 </body>
 </html>

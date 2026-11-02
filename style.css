@@ -154,46 +154,43 @@ margin-top: 8px;
 
 
 /* Routines list section */
-#routine-list
-{
-    width: 1043px;
-    height: 348px;
-    left: 352px;
-    top: 301px;
-
-    background: #d9d9d9;
+.routines-page {
+    flex-wrap: wrap;
 }
 
-#routine-list-name-font
-{
-    width: 503px;
-    height: 77px;
-    left: 385px;
-    top: 340px;
+.routines-page nav {
+    flex-shrink: 0;
+}
 
-    font-family: 'Inter';
-    font-style: normal;
+.routines-page section {
+    flex-basis: 280px;
+    min-width: 0;
+}
+
+#routine-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #d9d9d9;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.routine-name {
     font-weight: 500;
-    font-size: 64px;
-    line-height: 77px;
-
     color: #000000;
 }
 
-#routine-list-active-font
-{
-    width: 242px;
-    height: 77px;
-    left: 1080px;
-    top: 338px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 64px;
-    line-height: 77px;
-
-    color: #14AE5C;
+.routine-status {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 5px;
+    background: #e3f5e9;
+    font-weight: bold;
+    color: #16723b;
 }
-
 
