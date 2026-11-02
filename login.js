@@ -31,8 +31,8 @@ loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (userType === "parent") {
-        window.location.href = "parent.html";
+        window.location.href = "Parents/controls.html";
     } else {
-        window.location.href = "child.html";
+        window.location.href = "Kids/dashboard.html";
     }
 });
