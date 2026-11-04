@@ -194,6 +194,68 @@ margin-top: 8px;
     color: #16723b;
 }
 
+/* Sign-up form and login errors */
+#signup-form,
+#signup-passwords {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#signup-passwords.hidden {
+    display: none;
+}
+
+#signup-form input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+#signup-submit {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 8px;
+}
+
+.form-error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background-color: #fbe3e3;
+    color: #a11919;
+}
+
+.form-error.hidden {
+    display: none;
+}
+
+.form-link {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* Selected Parent/Child toggle */
+.login-options button.active {
+    background-color: #1255b5;
+    color: white;
+}
+
+/* Monitor icon beside the header title */
+header h1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+}
+
 .routine-status-red {
     align-self: flex-start;
     padding: 4px 12px;
