@@ -18,8 +18,26 @@
         </nav>
         <section>
             <h2>My Screen Time</h2>
-            <p>Remaining Time: 30 minutes</p>
-            <p>Status: Locked</p>
+            <p><span id="dashboard-time">No active session</span></p>
+            <p id="dashboard-status">Status: Locked</p>
+            <p id="session-empty">No session was received. Ask your parent to finish <a href="../Parents/setup.html">Setup</a> and choose “Deploy to Child Session” in this browser.</p>
+        </section>
+        <section id="child-session" class="hidden">
+            <h2 id="child-profile">My Session</h2>
+            <p id="child-schedule"></p>
+            <div id="child-wind-down" class="hidden" role="status">Wind down: finish your activity and get ready for a break.</div>
+            <p id="child-cue" role="status"></p>
+            <button type="button" id="enable-chime">Enable Audio Chime</button>
+            <h3>Allowed apps</h3>
+            <div id="child-apps" class="setup-fields"></div>
+            <p>App access is simulated here. Open websites are not controlled by this prototype.</p>
+            <button type="button" id="child-end">End Session Early</button>
+            <div id="child-end-confirmation" class="hidden">
+                <label>Parent PIN <input id="child-pin" type="password" inputmode="numeric" maxlength="4"></label>
+                <button type="button" id="child-confirm-end">Confirm End</button>
+                <button type="button" id="child-cancel-end">Cancel</button>
+                <p id="child-end-error" role="alert"></p>
+            </div>
         </section>
         <section>
             <h2>My Tasks</h2>
@@ -37,11 +55,11 @@
                 <p id="reward-description"></p>
 
                 <a id="reward-link"
-                href="https://www.youtube.com/"
+                href="https://www.youtubekids.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="hidden">
-                    Open YouTube
+                    Open YouTube Kids
                 </a>
             </div>
         </section>
@@ -60,7 +78,7 @@
             rewardContent.classList.remove("hidden");
 
             if (savedReward === "Unlock app") {
-                rewardDescription.textContent = "YouTube is now unlocked!";
+                rewardDescription.textContent = "YouTube Kids is now unlocked!";
                 rewardLink.classList.remove("hidden");
             } else {
                 rewardDescription.textContent =
@@ -69,6 +87,7 @@
         }
     </script>
 
+    <script src="../Javascripts/child-session.js"></script>
     <script src="../Javascripts/login.js"></script>
 </body>
 </html>

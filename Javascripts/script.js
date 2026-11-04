@@ -57,8 +57,18 @@ if (confirmButton && rewardScreen) {
 
 // Reset demo
 document.getElementById("reset-demo")?.addEventListener("click", () => {
-    localStorage.removeItem("childReward");
-    alert("Demo reset! Child rewards cleared.");
+    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name"].forEach(key => {
+        localStorage.removeItem(key);
+    });
+    selectedReward = null;
+    document.querySelectorAll(".reward-option").forEach(button => button.classList.remove("selected"));
+    const selectedText = document.getElementById("selected-reward");
+    if (selectedText) selectedText.textContent = "No reward selected";
+    if (confirmButton) confirmButton.disabled = true;
+    alert("Demo reset! Saved profiles, sessions, and rewards cleared.");
+    if (window.location.protocol === "file:") {
+        window.location.href = "setup.html#reset-demo";
+    }
 });
 
 // Next button - Open active hours screen
