@@ -1,253 +1,154 @@
-/* General page styling */
+/* ==========================================================================
+   Design system: use these variables instead of hard-coded values
+   ========================================================================== */
+:root {
+    /* Brand */
+    --color-primary: #1255b5;
+    --color-primary-hover: #0e4592;
+    --color-primary-active: #0b3674;
+    --color-primary-soft: #dbe7fb;
+    --color-on-primary: #ffffff;
+
+    /* Surfaces and borders */
+    --color-bg: #f4f6fa;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f4f6fa;
+    --color-border: #d5dbe5;
+    --color-border-strong: #7a8699;
+
+    /* Text */
+    --color-text: #1a2433;
+    --color-text-muted: #4a5668;
+    --color-placeholder: #5f6b7a;
+
+    /* States */
+    --color-focus: #1255b5;
+    --color-disabled-bg: #e6e9ef;
+    --color-disabled-text: #5b6575;
+    --color-success: #16723b;
+    --color-success-soft: #e3f5e9;
+    --color-danger: #a11919;
+    --color-danger-soft: #fbe3e3;
+
+    /* Kid-facing accents */
+    --color-kid-teal: #0f5f58;
+    --color-kid-teal-soft: #dcf5f1;
+    --color-kid-purple: #5b21b6;
+    --color-kid-purple-strong: #6d28d9;
+    --color-kid-purple-soft: #efe9fd;
+    --color-kid-orange: #8a3f06;
+    --color-kid-orange-soft: #fff0dc;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-pill: 999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(26, 36, 51, 0.08);
+    --shadow-md: 0 1px 3px rgba(26, 36, 51, 0.08), 0 4px 12px rgba(26, 36, 51, 0.06);
+
+    /* Type */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 28px;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --line-height: 1.5;
+    --line-height-tight: 1.25;
+
+    /* Sizing */
+    --target-size: 44px;
+    --sidebar-width: 220px;
+    --panel-min-width: 280px;
+    --form-width: 440px;
+    --content-width: 640px;
+    --border-width: 1px;
+    --accent-width: 4px;
+    --focus-width: 3px;
+    --focus-offset: 2px;
+    --reward-option-width: 140px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-/* Blue header */
-header {
-    background-color: #1255b5;
-    color: white;
-    padding: 15px 25px;
-}
-
-header h1 {
-    font-size: 22px;
-    margin: 0;
-}
-
-/* Main dashboard layout */
-main {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    min-height: 400px;
-}
-
-/* Left navigation sidebar */
-nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 130px;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height);
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
-/* Buttons */
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 14px;
+h2,
+h3 {
+    line-height: var(--line-height-tight);
 }
 
-button:hover {
-    background-color: #c5d9f5;
+p {
+    margin: 0 0 var(--space-3);
 }
 
-/* Dashboard panels */
-section {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    flex: 1;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+a {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
 }
 
-section h2 {
-    font-size: 18px;
-    margin-top: 0;
+a:hover {
+    color: var(--color-primary-active);
 }
 
-/* Parent Controls buttons */
-#grant-reward {
-    background-color: #d7e7ff;
-    margin-bottom: 10px;
+:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
 }
+
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-#reward-screen {
-    background: white;
-    margin: 25px auto;
-    padding: 25px;
-    max-width: 500px;
-    border-radius: 8px;
+/* ==========================================================================
+   Header
+   ========================================================================== */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: var(--space-4) var(--space-6);
+    box-shadow: var(--shadow-md);
 }
 
-.reward-options {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.reward-option {
-    background: #1685ed;
-    color: white;
-    flex: 1;
-}
-
-.reward-option.selected {
-    background: #07549c;
-    outline: 3px solid #a9d9ff;
-}
-
-#confirm-reward {
-    background: #a66e4d;
-    color: white;
-}
-
-#confirm-reward:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Login Screen */
-
-.login-container {
-    width: calc(100% - 40px);
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.login-options {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.login-options button {
-    flex: 1;
-    min-height: 44px;
-}
-
-#login-form,
-#password-container {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-#password-container.hidden {
-display: none;
-}
-
-#login-form input {
-box-sizing: border-box;
-width: 100%;
-min-height: 44px;
-padding: 10px 12px;
-margin-bottom: 12px;
-}
-
-#login-submit {
-width: 100%;
-min-height: 44px;
-margin-top: 8px;
-}
-
-
-
-/* Routines list section */
-.routines-page {
-    flex-wrap: wrap;
-}
-
-.routines-page nav {
-    flex-shrink: 0;
-}
-
-.routines-page section {
-    flex-basis: 280px;
-    min-width: 0;
-}
-
-#routine-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px;
-    border-radius: 8px;
-    background: #d9d9d9;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 1.5;
-    overflow-wrap: anywhere;
-}
-
-.routine-name {
-    font-weight: 500;
-    color: #000000;
-}
-
-.routine-status-green {
-    align-self: flex-start;
-    padding: 4px 12px;
-    border-radius: 5px;
-    background: #e3f5e9;
-    font-weight: bold;
-    color: #16723b;
-}
-
-/* Sign-up form and login errors */
-#signup-form,
-#signup-passwords {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#signup-passwords.hidden {
-    display: none;
-}
-
-#signup-form input {
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-}
-
-#signup-submit {
-    width: 100%;
-    min-height: 44px;
-    margin-top: 8px;
-}
-
-.form-error {
-    margin: 0;
-    padding: 10px 12px;
-    border-radius: 5px;
-    background-color: #fbe3e3;
-    color: #a11919;
-}
-
-.form-error.hidden {
-    display: none;
-}
-
-.form-link {
-    margin-top: 16px;
-    text-align: center;
-}
-
-/* Selected Parent/Child toggle */
-.login-options button.active {
-    background-color: #1255b5;
-    color: white;
-}
-
-/* Monitor icon beside the header title */
 header h1 {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
 }
 
 .header-icon {
@@ -256,33 +157,548 @@ header h1 {
     height: 1em;
 }
 
+/* ==========================================================================
+   Page layout: sidebar plus panels that wrap as the window narrows
+   ========================================================================== */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns:
+        calc(var(--sidebar-width) - var(--space-6))
+        repeat(auto-fit, minmax(min(var(--panel-min-width), 100%), 1fr));
+    grid-template-rows: auto auto auto 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    min-width: 0;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+nav {
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: calc(-1 * var(--space-6)) 0 calc(-1 * var(--space-6)) calc(-1 * var(--space-6));
+    padding: var(--space-4) var(--space-3);
+    background-color: var(--color-surface);
+    border-right: var(--border-width) solid var(--color-border);
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+section {
+    min-width: 0;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+section h2 {
+    margin: 0 0 var(--space-4);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+.status-panel p {
+    margin: 0 0 var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface-muted);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+}
+
+.status-panel p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Buttons: primary, secondary, nav and disabled share one set of states
+   ========================================================================== */
+:where(button, .sign-in-link, #reward-link) {
+    --btn-bg: var(--color-surface);
+    --btn-fg: var(--color-primary);
+    --btn-border: var(--color-primary);
+    --btn-bg-hover: var(--color-primary-soft);
+    --btn-fg-hover: var(--color-primary-active);
+    --btn-bg-active: var(--color-primary-soft);
+    --btn-fg-active: var(--color-primary-active);
+}
+
+/* Primary actions */
+:where(#grant-reward, #confirm-reward, #login-submit, #signup-submit,
+       .create-routine-button, .sign-in-link, #reward-link) {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-border: var(--color-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+}
+
+button,
+.sign-in-link,
+#reward-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--target-size);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--btn-border);
+    border-radius: var(--radius-md);
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.sign-in-link:hover,
+#reward-link:hover {
+    background-color: var(--btn-bg-hover);
+    color: var(--btn-fg-hover);
+}
+
+button:active,
+.sign-in-link:active,
+#reward-link:active {
+    background-color: var(--btn-bg-active);
+    color: var(--btn-fg-active);
+}
+
+/* Disabled, including unfinished features that stay focusable for their tooltip */
+button:disabled,
+button[aria-disabled="true"] {
+    --btn-bg: var(--color-disabled-bg);
+    --btn-fg: var(--color-disabled-text);
+    --btn-border: var(--color-disabled-bg);
+    --btn-bg-hover: var(--color-disabled-bg);
+    --btn-fg-hover: var(--color-disabled-text);
+    --btn-bg-active: var(--color-disabled-bg);
+    --btn-fg-active: var(--color-disabled-text);
+    cursor: not-allowed;
+}
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + var(--space-1));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-text);
+    color: var(--color-on-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Beside the button, so a sidebar tooltip doesn't cover the item above it */
+nav [data-tooltip]:hover::after,
+nav [data-tooltip]:focus-visible::after {
+    bottom: auto;
+    top: 50%;
+    left: 100%;
+    transform: translate(var(--space-2), -50%);
+}
+
+/* Sidebar buttons */
+nav button {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-text);
+    --btn-border: transparent;
+    justify-content: flex-start;
+    width: 100%;
+    text-align: left;
+}
+
+nav button[aria-current="page"] {
+    --btn-bg: var(--color-primary-soft);
+    --btn-fg: var(--color-primary-active);
+    box-shadow: inset var(--accent-width) 0 0 var(--color-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+nav button[aria-disabled="true"] {
+    --btn-bg: var(--color-disabled-bg);
+    --btn-border: var(--color-disabled-bg);
+    --btn-fg: var(--color-disabled-text);
+}
+
+nav [data-logout] {
+    margin-top: var(--space-4);
+}
+
+/* Parent Controls action stack */
+section > button {
+    display: flex;
+    width: 100%;
+    margin-bottom: var(--space-3);
+}
+
+section > button:last-child {
+    margin-bottom: 0;
+}
+
+section > button:not(#reset-demo)::before {
+    content: "+";
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+/* ==========================================================================
+   Reward screen
+   ========================================================================== */
+#reward-screen {
+    grid-column: 2 / -1;
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+#reward-screen h2 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-xl);
+}
+
+.reward-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+}
+
+.reward-option {
+    flex: 1 1 var(--reward-option-width);
+}
+
+.reward-option.selected {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.reward-option.selected::before {
+    content: "\2713";
+}
+
+#selected-reward {
+    font-weight: var(--font-weight-bold);
+}
+
+#confirm-reward {
+    margin-right: var(--space-2);
+}
+
+/* ==========================================================================
+   Login, sign-up and welcome
+   ========================================================================== */
+.login-container,
+.welcome-page section {
+    width: calc(100% - 2 * var(--space-6));
+    margin: var(--space-8) auto;
+    padding: var(--space-8);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.login-container {
+    max-width: var(--form-width);
+}
+
+.login-container h2,
+.welcome-page h2 {
+    margin: 0 0 var(--space-5);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.login-options {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.login-options button {
+    flex: 1;
+}
+
+.login-options button.active {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+#login-form,
+#password-container,
+#signup-form,
+#signup-passwords {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+label {
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+#login-form input,
+#signup-form input {
+    width: 100%;
+    min-height: var(--target-size);
+    margin-bottom: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+}
+
+#login-form input::placeholder,
+#signup-form input::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+}
+
+#login-submit,
+#signup-submit {
+    width: 100%;
+    margin-top: var(--space-2);
+}
+
+.form-error {
+    margin: 0 0 var(--space-2);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.form-link {
+    margin: var(--space-4) 0 0;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Links in running text need a 44px tap area without changing the line height */
+.form-link a {
+    display: inline-block;
+    padding: var(--space-3) var(--space-1);
+}
+
+.welcome-page {
+    display: block;
+    padding: 0;
+}
+
+.welcome-page section {
+    max-width: var(--content-width);
+}
+
+.welcome-page h3 {
+    margin: var(--space-5) 0 var(--space-2);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+.welcome-page p {
+    color: var(--color-text-muted);
+}
+
+.sign-in-link {
+    margin-top: var(--space-3);
+}
+
+/* ==========================================================================
+   Routines
+   ========================================================================== */
+.routines-page section {
+    min-width: 0;
+}
+
+#routine-list {
+    overflow-wrap: anywhere;
+}
+
+#routine-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#routine-list th {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-border-strong);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+}
+
+#routine-list td {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Status toggles: the dot and the word both carry the state, not just color */
+.routine-status-green,
 .routine-status-red {
-    align-self: flex-start;
-    padding: 4px 12px;
-    border-radius: 5px;
-    background: #f8e6e6;
-    font-weight: bold;
-    color: rgb(119, 17, 17);
+    --btn-border: transparent;
+    border-radius: var(--radius-pill);
+    font-weight: var(--font-weight-bold);
+}
+
+.routine-status-green::before,
+.routine-status-red::before {
+    content: "";
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-pill);
+    background-color: currentColor;
+}
+
+.routine-status-green {
+    --btn-bg: var(--color-success-soft);
+    --btn-fg: var(--color-success);
+    --btn-bg-hover: var(--color-success-soft);
+    --btn-fg-hover: var(--color-success);
+    --btn-bg-active: var(--color-success-soft);
+    --btn-fg-active: var(--color-success);
+}
+
+.routine-status-red {
+    --btn-bg: var(--color-danger-soft);
+    --btn-fg: var(--color-danger);
+    --btn-bg-hover: var(--color-danger-soft);
+    --btn-fg-hover: var(--color-danger);
+    --btn-bg-active: var(--color-danger-soft);
+    --btn-fg-active: var(--color-danger);
+}
+
+.routine-status-green:hover,
+.routine-status-red:hover {
+    border-color: currentColor;
 }
 
 .create-routine-button {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 50px;
-
-    position: absolute;
-    width: 500px;
-    height: 113px;
-    left: 1100px;    
-    top: 500px;
-    background: #D9D9D9;
-
+    margin: var(--space-6) auto 0;
 }
 
+/* ==========================================================================
+   Kid-facing dashboard: same components, friendlier colors
+   ========================================================================== */
+.kid-page section {
+    --kid-accent: var(--color-kid-teal);
+    --kid-soft: var(--color-kid-teal-soft);
+    border-top: var(--accent-width) solid var(--kid-accent);
+    font-size: var(--font-size-lg);
+}
+
+.kid-page section:nth-of-type(2) {
+    --kid-accent: var(--color-kid-orange);
+    --kid-soft: var(--color-kid-orange-soft);
+}
+
+.kid-page section:nth-of-type(3) {
+    --kid-accent: var(--color-kid-purple);
+    --kid-soft: var(--color-kid-purple-soft);
+}
+
+.kid-page section h2 {
+    color: var(--kid-accent);
+    font-size: var(--font-size-xl);
+}
+
+.kid-page .status-panel p {
+    background-color: var(--kid-soft);
+}
+
+.kid-page #reward-message {
+    font-weight: var(--font-weight-bold);
+}
+
+.kid-page #reward-link {
+    --btn-bg: var(--color-kid-purple-strong);
+    --btn-border: var(--color-kid-purple-strong);
+    --btn-bg-hover: var(--color-kid-purple);
+    --btn-bg-active: var(--color-kid-purple);
+}
+
+/* ==========================================================================
+   Narrow windows
+   ========================================================================== */
+@media (max-width: 767px) {
+    main {
+        display: block;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-6);
+        border-right: 0;
+        border-bottom: var(--border-width) solid var(--color-border);
+    }
+
+    nav button {
+        width: auto;
+    }
+
+    nav [data-logout] {
+        margin-top: 0;
+    }
+
+    section {
+        margin-bottom: var(--space-6);
+    }
+
+    .welcome-page section {
+        margin: var(--space-6) auto;
+        padding: var(--space-6);
+    }
+
+    .login-container {
+        padding: var(--space-6);
+    }
+}

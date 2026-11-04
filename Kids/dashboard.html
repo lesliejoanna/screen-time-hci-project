@@ -8,7 +8,7 @@
     <script src="../Javascripts/accounts.js"></script>
     <script>requireRole("child");</script>
 </head>
-<body>
+<body class="kid-page">
     <header>
         <h1>
             <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
@@ -17,16 +17,16 @@
     </header>
     <main>
         <nav>
-            <button>Dashboard</button>
-            <button>Routines</button>
+            <button type="button" aria-current="page">Dashboard</button>
+            <button type="button" aria-disabled="true" aria-label="Routines, coming soon" data-tooltip="Coming soon">Routines</button>
             <button type="button" data-logout>Log Out</button>
         </nav>
-        <section>
+        <section class="status-panel">
             <h2>My Screen Time</h2>
             <p>Remaining Time: 30 minutes</p>
             <p>Status: Locked</p>
         </section>
-        <section>
+        <section class="status-panel">
             <h2>My Tasks</h2>
             <p>Homework: Completed</p>
             <p>Rewards Earned: See My Rewards below</p>

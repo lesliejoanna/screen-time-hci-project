@@ -1,13 +1,18 @@
-const dashboard = document.querySelector("main");
+const dashboardPanels = document.querySelectorAll("main > section");
 const rewardScreen = document.getElementById("reward-screen");
 const grantRewardButton = document.getElementById("grant-reward");
 const confirmButton = document.getElementById("confirm-reward");
 
 let selectedReward = null;
 
+// The sidebar stays visible, so only the panels swap with the reward screen.
+function showRewardScreen(isVisible) {
+    dashboardPanels.forEach(panel => panel.classList.toggle("hidden", isVisible));
+    rewardScreen.classList.toggle("hidden", !isVisible);
+}
+
 grantRewardButton.addEventListener("click", () => {
-    dashboard.classList.add("hidden");
-    rewardScreen.classList.remove("hidden");
+    showRewardScreen(true);
 });
 
 document.querySelectorAll(".reward-option").forEach(button => {
@@ -27,8 +32,7 @@ document.querySelectorAll(".reward-option").forEach(button => {
 });
 
 document.getElementById("back-dashboard").addEventListener("click", () => {
-    rewardScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
+    showRewardScreen(false);
 });
 
 confirmButton.addEventListener("click", () => {
@@ -38,8 +42,7 @@ confirmButton.addEventListener("click", () => {
 
     localStorage.setItem("childReward", selectedReward);
 
-    rewardScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
+    showRewardScreen(false);
 })
 
 document.getElementById("reset-demo").addEventListener("click", () => {
