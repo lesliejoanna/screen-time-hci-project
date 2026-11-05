@@ -286,3 +286,11 @@ header h1 {
 
 }
 
+.task-selected {
+    background-color: #1685ed;
+}
+
+.task-not-selected {
+    background-color: #e0e0e0;
+
+}
