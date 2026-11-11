@@ -294,3 +294,28 @@ header h1 {
     background-color: #e0e0e0;
 
 }
+
+/*Configure 2: Pair Rewards*/
+
+.reward-selected
+{
+    width: 286px;
+    height: 313px;
+    left: 121px;
+    top: 239px;
+
+    background: #14AE5C;
+    border-radius: 20px;
+}
+
+.reward-not-selected
+{
+    width: 286px;
+    height: 313px;
+    left: 121px;
+    top: 239px;
+
+    background: #ae1414;
+    border-radius: 20px;
+}
+
