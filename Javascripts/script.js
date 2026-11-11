@@ -4,6 +4,23 @@ const grantRewardButton = document.getElementById("grant-reward");
 const confirmButton = document.getElementById("confirm-reward");
 
 let selectedReward = null;
+function updateChildStatus() {
+    const statusBadge = document.getElementById("child-lock-status");
+
+    if (!statusBadge) return;
+
+    const activeReward = localStorage.getItem("childReward");
+
+    if (activeReward) {
+        statusBadge.textContent = "Unlocked";
+        statusBadge.classList.remove("locked");
+        statusBadge.classList.add("unlocked");
+    } else {
+        statusBadge.textContent = "Locked";
+        statusBadge.classList.remove("unlocked");
+        statusBadge.classList.add("locked");
+    }
+}
 
 grantRewardButton.addEventListener("click", () => {
     dashboard.classList.add("hidden");
@@ -42,7 +59,12 @@ confirmButton.addEventListener("click", () => {
     dashboard.classList.remove("hidden");
 })
 
+updateChildStatus();
+
 document.getElementById("reset-demo").addEventListener("click", () => {
     localStorage.removeItem("childReward");
+    updateChildStatus();
     alert("Demo reset! Child rewards cleared.");
 });
+
+updateChildStatus();

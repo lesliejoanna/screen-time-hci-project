@@ -1,0 +1,62 @@
+main > section {
+    min-height: 220px;
+    height: fit-content;
+    padding: 24px;
+}
+main > section h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+main > section button {
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+#grant-reward {
+    background-color: #1857b6;
+    color: white;
+    font-weight: 600;
+}
+#grant-reward:hover {
+    background-color: #10418b;
+}
+main > section p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin:8px 0;
+}
+
+/* Child status rows */
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    max-width: 340px;
+}
+
+/* Shared badge styling */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+/* Completed task */
+.status-badge.completed {
+    background-color: #e2f5e8;
+    color: #176b35;
+}
+
+/* Locked screen time */
+.status-badge.locked {
+    background-color: #fde8e8;
+    color: #a12626;
+}
+/* Unlocked screen time */
+.status-badge.unlocked {
+    background-color: #e2f5e8;
+    color: #176b35;
+
+}
