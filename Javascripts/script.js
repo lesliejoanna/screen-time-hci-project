@@ -7,6 +7,23 @@ const nextButton = document.getElementById("next-button");
 const hoursScreen = document.getElementById("hours-screen");
 
 let selectedReward = null;
+function updateChildStatus() {
+    const statusBadge = document.getElementById("child-lock-status");
+
+    if (!statusBadge) return;
+
+    const activeReward = localStorage.getItem("childReward");
+
+    if (activeReward) {
+        statusBadge.textContent = "Unlocked";
+        statusBadge.classList.remove("locked");
+        statusBadge.classList.add("unlocked");
+    } else {
+        statusBadge.textContent = "Locked";
+        statusBadge.classList.remove("unlocked");
+        statusBadge.classList.add("locked");
+    }
+}
 
 // Open reward screen
 if (grantRewardButton && rewardScreen) {

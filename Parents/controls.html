@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parent Dashboard - Screen Time Manager</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="controls.css">
     <script src="../Javascripts/accounts.js"></script>
     <script>requireRole("parent");</script>
 </head>
@@ -34,8 +35,17 @@
 
         <section>
             <h2>Child Status</h2>
-            <p>Homework: Completed</p>
-            <p>Status: Locked</p>
+
+ <div class="status-row">
+    <span>Homework</span>
+    <span class="status-badge completed">Completed</span>
+</div>
+
+<div class="status-row">
+    <span>Screen Time</span>
+    <span class="status-badge locked" id="child-lock-status">Locked</span>
+</div>
+
         </section>
     </main>
 <div id="reward-screen" class="hidden">
