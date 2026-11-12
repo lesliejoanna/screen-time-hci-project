@@ -1,81 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Setup - Screen Time Manager</title>
+    <title>Setup - Screen Time Manager</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="../Javascripts/accounts.js"></script>
+    <script>requireRole("parent");</script>
 </head>
 
 <body>
     <header>
-        <h1>Screen Time Manager</h1>
+        <h1>
+            <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
+            Screen Time Manager
+        </h1>
     </header>
-    <main class="setup-page">
-        <nav aria-label="Parent navigation">
+
+    <main>
+        <nav>
             <button onclick="window.location.href='controls.html'">Controls</button>
-            <button onclick="window.location.href='routines.html'">Routines</button>
+            <button onclick="window.location.href='Routines/mainpage.html'">Routines</button>
             <button onclick="window.location.href='setup.html'">Setup</button>
             <button type="button" data-logout>Log Out</button>
         </nav>
-        <section class="setup-panel">
-            <p id="setup-progress" role="status"></p>
-            <div data-step="0">
-                <h2 tabindex="-1">Enter parent PIN</h2>
-                <p>Unlock setup to create a focused learning session.</p>
-                <p>Prototype PIN: <strong>1234</strong></p><label for="setup-pin">Parent PIN</label><input
-                    id="setup-pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off">
-                <p id="pin-error" role="alert"></p>
-            </div>
-            <div data-step="1" class="hidden">
-                <h2 tabindex="-1">Allowed and disallowed apps</h2>
-                <p>Choose what your child can use during the session. These choices simulate restrictions inside this
-                    prototype.</p>
-                <div class="setup-fields"><label><input type="checkbox" id="allow-duolingo" checked> Duolingo
-                        (duolingo.com)</label><label><input type="checkbox" id="allow-youtube"> YouTube
-                        Kids</label><label><input type="checkbox" id="allow-minecraft"> Minecraft Classic
-                        (classic.minecraft.net)</label><label><input type="checkbox" id="allow-coolmath"> Coolmath Games
-                        (coolmathgames.com)</label></div>
-            </div>
-            <div data-step="2" class="hidden">
-                <h2 tabindex="-1">Set active hours</h2>
-                <p>Choose a daily start time and how long the learning session lasts.</p>
-                <div class="setup-fields"><label>Daily start time <input id="session-start" type="time" value="15:00"
-                            required></label><label>Session duration (minutes) <input id="session-duration"
-                            type="number" min="1" max="180" value="30" required></label></div>
-                <p>The child dashboard session starts immediately when you deploy. The daily schedule is saved with your
-                    profile.</p>
-            </div>
-            <div data-step="3" class="hidden">
-                <h2 tabindex="-1">Transition cues</h2>
-                <p>Help your child prepare before the session ends.</p>
-                <div class="setup-fields"><label><input id="cue-visual" type="checkbox" checked> Visual warm-down with 5
-                        minutes remaining</label><label><input id="cue-audio" type="checkbox" checked> Audio chime with
-                        2 minutes remaining</label></div>
-            </div>
-            <div data-step="4" class="hidden">
-                <h2 tabindex="-1">Focus modes</h2>
-                <div class="setup-fields"><label><input id="focus-hide" type="checkbox" checked> Hide navigation during
-                        the child session</label><label><input id="focus-motion" type="checkbox" checked> Reduce
-                        animations</label></div>
-                <p>Focus settings apply to kid's dashboard during the session.</p>
-            </div>
-            <div data-step="5" class="hidden">
-                <h2 tabindex="-1">Ready to deploy</h2><label>Profile name <input id="profile-name" value="Profile 1"
-                        maxlength="60" required></label>
-                <dl id="profile-summary"></dl>
-                <p id="save-status" role="status"></p>
-            </div>
-            <p id="setup-error" role="alert"></p>
-            <div class="setup-actions" id="setup-navigation">
-                <button type="button" id="setup-back">Back</button>
-                <button type="button" id="setup-next">Confirm PIN</button>
-            </div>
+
+        <section>
+            <h2>Setup</h2>
         </section>
     </main>
-    <script src="../Javascripts/setup.js"></script>
+
     <script src="../Javascripts/login.js"></script>
 </body>
-
 </html>

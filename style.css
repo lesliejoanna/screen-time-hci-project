@@ -185,7 +185,7 @@ margin-top: 8px;
     color: #000000;
 }
 
-.routine-status {
+.routine-status-green {
     align-self: flex-start;
     padding: 4px 12px;
     border-radius: 5px;
@@ -194,110 +194,103 @@ margin-top: 8px;
     color: #16723b;
 }
 
-/* Sandbox Setup section*/
-section {
-    position: relative;
-}
-
-#next-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-#hours-screen {
-    background: white;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-#hours-screen.hidden {
-    display: none;
-}
-
-/* Session setup */
-.setup-page {
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.setup-page nav {
-    flex-shrink: 0;
-}
-
-.setup-panel {
-    flex-basis: 320px;
-    min-width: 0;
-    max-width: 800px;
-    line-height: 1.5;
-}
-
-.setup-fields {
+/* Sign-up form and login errors */
+#signup-form,
+#signup-passwords {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin: 20px 0;
+    gap: 8px;
 }
 
-.setup-panel input:not([type="checkbox"]) {
-    display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    min-height: 44px;
-    margin: 8px 0;
-    padding: 10px;
-    font: inherit;
-}
-
-.setup-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.setup-actions.hidden {
+#signup-passwords.hidden {
     display: none;
 }
 
-.setup-panel button {
+#signup-form input {
+    box-sizing: border-box;
+    width: 100%;
     min-height: 44px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
 }
 
-#setup-next {
-    background: #1255b5;
+#signup-submit {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 8px;
+}
+
+.form-error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background-color: #fbe3e3;
+    color: #a11919;
+}
+
+.form-error.hidden {
+    display: none;
+}
+
+.form-link {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* Selected Parent/Child toggle */
+.login-options button.active {
+    background-color: #1255b5;
     color: white;
 }
 
-.setup-panel button:disabled {
-    opacity: 0.5;
-    cursor: default;
+/* Monitor icon beside the header title */
+header h1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.setup-panel dt {
-    margin-top: 12px;
+.header-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+}
+
+.routine-status-red {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 5px;
+    background: #f8e6e6;
     font-weight: bold;
+    color: rgb(119, 17, 17);
 }
 
-.setup-panel dd {
-    margin-left: 0;
+.create-routine-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    font-size: 50px;
+
+    position: absolute;
+    width: 500px;
+    height: 113px;
+    left: 1100px;    
+    top: 500px;
+    background: #D9D9D9;
+
 }
 
-#setup-error {
-    color: #a21c1c;
+.task-selected {
+    background-color: #1685ed;
 }
 
-.setup-activity {
-    padding: 24px;
-    background: #e3f5e9;
-    border-radius: 8px;
-}
+.task-not-selected {
+    background-color: #e0e0e0;
 
-.setup-reduce-motion *,
-.setup-reduce-motion *::before,
-.setup-reduce-motion *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
 }
