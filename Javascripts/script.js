@@ -1,48 +1,80 @@
+
 const dashboard = document.querySelector("main");
 const rewardScreen = document.getElementById("reward-screen");
 const grantRewardButton = document.getElementById("grant-reward");
 const confirmButton = document.getElementById("confirm-reward");
+const nextButton = document.getElementById("next-button");
+const hoursScreen = document.getElementById("hours-screen");
 
 let selectedReward = null;
 
-grantRewardButton.addEventListener("click", () => {
-    dashboard.classList.add("hidden");
-    rewardScreen.classList.remove("hidden");
-});
-
-document.querySelectorAll(".reward-option").forEach(button => {
-    button.addEventListener("click", () => {
-        document.querySelectorAll(".reward-option").forEach(option => {
-            option.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-        selectedReward = button.dataset.reward;
-
-        document.getElementById("selected-reward").textContent =
-            `Selected: ${selectedReward}`;
-
-        confirmButton.disabled = false;
+// Open reward screen
+if (grantRewardButton && rewardScreen) {
+    grantRewardButton.addEventListener("click", () => {
+        dashboard.classList.add("hidden");
+        rewardScreen.classList.remove("hidden");
     });
-});
+}
 
-document.getElementById("back-dashboard").addEventListener("click", () => {
+// Select reward
+if (rewardScreen && confirmButton) {
+    document.querySelectorAll(".reward-option").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".reward-option").forEach(option => {
+                option.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+            selectedReward = button.dataset.reward;
+
+            const selectedText = document.getElementById("selected-reward");
+            if (selectedText) {
+                selectedText.textContent = `Selected: ${selectedReward}`;
+            }
+
+            confirmButton.disabled = false;
+        });
+    });
+}
+
+// Back to dashboard
+document.getElementById("back-dashboard")?.addEventListener("click", () => {
     rewardScreen.classList.add("hidden");
     dashboard.classList.remove("hidden");
 });
 
-confirmButton.addEventListener("click", () => {
-    if (!selectedReward) {
-        return;
+// Confirm reward
+if (confirmButton && rewardScreen) {
+    confirmButton.addEventListener("click", () => {
+        if (!selectedReward) return;
+
+        localStorage.setItem("childReward", selectedReward);
+
+        rewardScreen.classList.add("hidden");
+        dashboard.classList.remove("hidden");
+    });
+}
+
+// Reset demo
+document.getElementById("reset-demo")?.addEventListener("click", () => {
+    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name"].forEach(key => {
+        localStorage.removeItem(key);
+    });
+    selectedReward = null;
+    document.querySelectorAll(".reward-option").forEach(button => button.classList.remove("selected"));
+    const selectedText = document.getElementById("selected-reward");
+    if (selectedText) selectedText.textContent = "No reward selected";
+    if (confirmButton) confirmButton.disabled = true;
+    alert("Demo reset! Saved profiles, sessions, and rewards cleared.");
+    if (window.location.protocol === "file:") {
+        window.location.href = "setup.html#reset-demo";
     }
-
-    localStorage.setItem("childReward", selectedReward);
-
-    rewardScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
-})
-
-document.getElementById("reset-demo").addEventListener("click", () => {
-    localStorage.removeItem("childReward");
-    alert("Demo reset! Child rewards cleared.");
 });
+
+// Next button - Open active hours screen
+if (nextButton && hoursScreen) {
+    nextButton.addEventListener("click", () => {
+        dashboard.classList.add("hidden");
+        hoursScreen.classList.remove("hidden");
+    });
+}
