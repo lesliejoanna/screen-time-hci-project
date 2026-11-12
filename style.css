@@ -294,3 +294,103 @@ header h1 {
     background-color: #e0e0e0;
 
 }
+
+/*Configure 2: Pair Rewards*/
+
+.reward-selected
+{
+    width: 286px;
+    height: 313px;
+    left: 121px;
+    top: 239px;
+
+    background: #14AE5C;
+    border-radius: 20px;
+}
+
+.reward-not-selected
+{
+    width: 286px;
+    height: 313px;
+    left: 121px;
+    top: 239px;
+
+    background: #ae1414;
+    border-radius: 20px;
+}
+
+/* Session setup flow */
+.setup-page {
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.setup-page nav {
+    flex-shrink: 0;
+}
+
+.setup-panel {
+    flex-basis: 320px;
+    min-width: 0;
+    max-width: 800px;
+    line-height: 1.5;
+}
+
+.setup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.setup-panel input:not([type="checkbox"]) {
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 44px;
+    margin: 8px 0;
+    padding: 10px;
+    font: inherit;
+}
+
+.setup-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.setup-actions.hidden {
+    display: none;
+}
+
+#setup-next {
+    background: #1255b5;
+    color: white;
+}
+
+#setup-back:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.setup-panel dt {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.setup-panel dd {
+    margin-left: 0;
+}
+
+#setup-error {
+    color: #a21c1c;
+}
+
+.setup-reduce-motion *,
+.setup-reduce-motion *::before,
+.setup-reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}

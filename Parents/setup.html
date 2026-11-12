@@ -17,7 +17,7 @@
         </h1>
     </header>
 
-    <main>
+    <main class="setup-page">
         <nav>
             <button onclick="window.location.href='controls.html'">Controls</button>
             <button onclick="window.location.href='Routines/mainpage.html'">Routines</button>
@@ -25,11 +25,62 @@
             <button type="button" data-logout>Log Out</button>
         </nav>
 
-        <section>
-            <h2>Setup</h2>
+        <section class="setup-panel">
+            <p id="setup-progress" role="status"></p>
+            <div data-step="0">
+                <h2 tabindex="-1">Enter parent PIN</h2>
+                <p>Unlock setup to create a focused session. Prototype PIN: <strong>1234</strong></p>
+                <label for="setup-pin">Parent PIN</label>
+                <input id="setup-pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off">
+            </div>
+            <div data-step="1" class="hidden">
+                <h2 tabindex="-1">Allowed apps</h2>
+                <p>Choose the apps available on the child dashboard.</p>
+                <div class="setup-fields">
+                    <label><input id="allow-duolingo" type="checkbox" checked> Duolingo (duolingo.com)</label>
+                    <label><input id="allow-youtube" type="checkbox"> YouTube Kids</label>
+                    <label><input id="allow-minecraft" type="checkbox"> Minecraft Classic (classic.minecraft.net)</label>
+                    <label><input id="allow-coolmath" type="checkbox"> Coolmath Games (coolmathgames.com)</label>
+                </div>
+            </div>
+            <div data-step="2" class="hidden">
+                <h2 tabindex="-1">Set active hours</h2>
+                <div class="setup-fields">
+                    <label>Daily start time <input id="session-start" type="time" value="15:00" required></label>
+                    <label>Duration in minutes <input id="session-duration" type="number" min="1" max="180" value="30" required></label>
+                </div>
+                <p>Deployment starts the session immediately. The daily start time is saved with the profile.</p>
+            </div>
+            <div data-step="3" class="hidden">
+                <h2 tabindex="-1">Transition cues</h2>
+                <div class="setup-fields">
+                    <label><input id="cue-visual" type="checkbox" checked> Visual wind-down with 5 minutes remaining</label>
+                    <label><input id="cue-audio" type="checkbox" checked> Audio chime with 2 minutes remaining</label>
+                </div>
+            </div>
+            <div data-step="4" class="hidden">
+                <h2 tabindex="-1">Focus modes</h2>
+                <div class="setup-fields">
+                    <label><input id="focus-hide" type="checkbox" checked> Hide child dashboard navigation during the session</label>
+                    <label><input id="focus-motion" type="checkbox" checked> Reduce animations</label>
+                </div>
+            </div>
+            <div data-step="5" class="hidden">
+                <h2 tabindex="-1">Ready to deploy</h2>
+                <label>Profile name <input id="profile-name" value="Profile 1" maxlength="60" required></label>
+                <p>Deployment opens the child dashboard. Sign in with a child account to use the saved session.</p>
+                <dl id="profile-summary"></dl>
+                <p id="save-status" role="status"></p>
+            </div>
+            <p id="setup-error" role="alert"></p>
+            <div id="setup-navigation" class="setup-actions">
+                <button id="setup-back" type="button">Back</button>
+                <button id="setup-next" type="button">Confirm PIN</button>
+            </div>
         </section>
     </main>
 
+    <script src="../Javascripts/setup.js"></script>
     <script src="../Javascripts/login.js"></script>
 </body>
 </html>
