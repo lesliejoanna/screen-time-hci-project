@@ -1,0 +1,148 @@
+
+/* ===== CHILD DASHBOARD: PLAYFUL DESIGN ===== */
+
+body.child-dashboard {
+    background: #f7f5ff;
+    color: #334155;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/* Colorful header */
+.child-dashboard header {
+    background: linear-gradient(110deg, #7c3aed, #3b82f6);
+}
+
+.child-dashboard header h1 {
+    color: #ffffff;
+}
+
+/* Sidebar navigation */
+.child-dashboard main > nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.child-dashboard main > nav button {
+    background: #ffffff;
+    color: #6d28d9;
+    border: 2px solid #e9d5ff;
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.child-dashboard main > nav button:hover {
+    background: #ede9fe;
+    transform: translateY(-2px);
+}
+
+/* Dashboard cards */
+.child-dashboard main > section {
+    min-width: 0;
+    min-height: 240px;
+    height: fit-content;
+    padding: 28px;
+    background: white;
+    border-radius: 22px;
+    border: 2px solid #ede9fe;
+    box-shadow: 0 8px 24px rgba(109, 40, 217, 0.08);
+    box-sizing: border-box;
+}
+
+.child-dashboard main > section h2 {
+    margin: 0 0 22px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Screen time */
+.child-dashboard main > section:first-of-type {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.child-dashboard main > section:first-of-type h2 {
+    color: #1d4ed8;
+}
+
+.child-dashboard #dashboard-time {
+    display: inline-block;
+    font-size: 23px;
+    font-weight: 800;
+    color: #1d4ed8;
+}
+
+/* Task card */
+.child-dashboard main > section:nth-of-type(3) {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.child-dashboard main > section:nth-of-type(3) h2 {
+    color: #15803d;
+}
+
+/* Reward card */
+.child-dashboard main > section:last-of-type {
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.child-dashboard main > section:last-of-type h2 {
+    color: #b45309;
+}
+
+.child-dashboard #reward-message {
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Reward link */
+.child-dashboard #reward-link:not(.hidden) {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: #7c3aed;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.child-dashboard #reward-link.hidden {
+    display: none;
+}
+
+/* Session controls */
+.child-dashboard #child-session button {
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+}
+
+/* Keep hidden content hidden */
+.child-dashboard .hidden {
+    display: none;
+}
+
+/* Keyboard accessibility */
+.child-dashboard button:focus-visible,
+.child-dashboard a:focus-visible {
+    outline: 3px solid #7c3aed;
+    outline-offset: 3px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .child-dashboard main > section {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .child-dashboard main > nav button {
+        transition: none;
+    }
+}
