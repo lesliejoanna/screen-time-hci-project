@@ -16,11 +16,13 @@ isitSelected1.addEventListener("click", function()
     if (tasks[0].status === "Not Selected") 
     {
         isitSelected1.className = "task-selected";
+        isitSelected1.setAttribute("aria-pressed", "true");
         tasks[0].status = "Selected";
     } 
     else 
     {
         isitSelected1.className = "task-not-selected";
+        isitSelected1.setAttribute("aria-pressed", "false");
         tasks[0].status = "Not Selected";
     }
 }
@@ -35,11 +37,13 @@ isitSelected2.addEventListener("click", function()
     if (tasks[1].status === "Not Selected") 
     {
         isitSelected2.className = "task-selected";
+        isitSelected2.setAttribute("aria-pressed", "true");
         tasks[1].status = "Selected";
     } 
     else 
     {
         isitSelected2.className = "task-not-selected";
+        isitSelected2.setAttribute("aria-pressed", "false");
         tasks[1].status = "Not Selected";
     }
 }

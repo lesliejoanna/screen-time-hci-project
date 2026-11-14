@@ -1,5 +1,9 @@
 
-const dashboard = document.querySelector("main");
+// Hide only the panels (not all of main) so the sidebar stays visible on the reward screen.
+const dashboardPanels = document.querySelectorAll("main > section");
+function setPanelsHidden(isHidden) {
+    dashboardPanels.forEach(panel => panel.classList.toggle("hidden", isHidden));
+}
 const rewardScreen = document.getElementById("reward-screen");
 const grantRewardButton = document.getElementById("grant-reward");
 const confirmButton = document.getElementById("confirm-reward");
@@ -29,7 +33,7 @@ function updateChildStatus() {
 
 if (grantRewardButton && rewardScreen) {
     grantRewardButton.addEventListener("click", () => {
-        dashboard.classList.add("hidden");
+        setPanelsHidden(true);
         rewardScreen.classList.remove("hidden");
     });
 }
@@ -56,7 +60,7 @@ if (rewardScreen && confirmButton) {
 
 document.getElementById("back-dashboard")?.addEventListener("click", () => {
     rewardScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
+    setPanelsHidden(false);
 });
 
 if (confirmButton && rewardScreen) {
@@ -84,7 +88,7 @@ if (confirmButton && rewardScreen) {
     }
 
     rewardScreen.classList.add("hidden");
-    dashboard.classList.remove("hidden");
+    setPanelsHidden(false);
 
     updateChildStatus();
     alert("Reward granted successfully!");
@@ -130,7 +134,7 @@ document.getElementById("reset-demo")?.addEventListener("click", () => {
 
 if (nextButton && hoursScreen) {
     nextButton.addEventListener("click", () => {
-        dashboard.classList.add("hidden");
+        setPanelsHidden(true);
         hoursScreen.classList.remove("hidden");
     });
 }

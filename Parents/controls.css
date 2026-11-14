@@ -1,28 +1,35 @@
+/* Parent Controls panels */
 main > section {
     min-height: 220px;
     height: fit-content;
-    padding: 24px;
 }
+
 main > section h2 {
-    font-size: 20px;
-    margin-bottom: 18px;
+    font-size: var(--font-size-xl);
 }
-main > section button {
-    margin-right: 8px;
-    margin-bottom: 10px;
-}
-#grant-reward {
-    background-color: #1857b6;
-    color: white;
-    font-weight: 600;
-}
-#grant-reward:hover {
-    background-color: #10418b;
-}
+
 main > section p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin:8px 0;
+    line-height: var(--line-height-loose);
+    margin: var(--space-2) 0;
+}
+
+/* Action list: full-width buttons stacked as in the Figma */
+main > section > button {
+    display: flex;
+    width: 100%;
+    margin-bottom: var(--space-3);
+}
+
+main > section > button:last-child {
+    margin-bottom: 0;
+}
+
+#grant-reward::before,
+#grant-reward + button::before {
+    content: "+";
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
 }
 
 /* Child status rows */
@@ -30,54 +37,62 @@ main > section p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    margin: 16px 0;
-    max-width: 340px;
+    gap: var(--space-4);
+    margin: 0 0 var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-muted);
+    font-weight: var(--font-weight-medium);
 }
 
 /* Shared badge styling */
 .status-badge {
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
 }
+
 /* Completed task */
 .status-badge.completed {
-    background-color: #e2f5e8;
-    color: #176b35;
+    background-color: var(--color-success-soft);
+    color: var(--color-success);
 }
 
 /* Locked screen time */
 .status-badge.locked {
-    background-color: #fde8e8;
-    color: #a12626;
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
 }
+
 /* Unlocked screen time */
 .status-badge.unlocked {
-    background-color: #e2f5e8;
-    color: #176b35;
-
+    background-color: var(--color-success-soft);
+    color: var(--color-success);
 }
 
 .child-activity-panel {
     min-width: 0;
 }
 
+#child-activity-status {
+    color: var(--color-text-muted);
+}
+
 #child-activity-list {
-    max-height: 360px;
+    max-height: var(--activity-list-height);
     overflow-y: auto;
-    padding-left: 24px;
+    padding-left: var(--space-6);
 }
 
 #child-activity-list li {
-    margin-bottom: 16px;
+    margin-bottom: var(--space-4);
     overflow-wrap: anywhere;
 }
 
 #child-activity-list time {
     display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
+    margin-bottom: var(--space-1);
+    font-weight: var(--font-weight-bold);
 }

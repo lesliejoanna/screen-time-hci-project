@@ -20,7 +20,7 @@
     </header>
     <main>
         <nav>
-            <button onclick="window.location.href='controls.html'">Controls</button>
+            <button onclick="window.location.href='controls.html'" aria-current="page">Controls</button>
             <button onclick="window.location.href='Routines/mainpage.html'">Routines</button>
             <button onclick="window.location.href='setup.html'">Setup</button>
             <button type="button" data-logout>Log Out</button>
@@ -29,7 +29,7 @@
         <section>
             <h2>Parent Controls</h2>
             <button id="grant-reward">Grant Reward</button>
-            <button>Custom Reward</button>
+            <button type="button" aria-disabled="true" aria-label="Custom Reward, coming soon" data-tooltip="Coming soon">Custom Reward</button>
             <button id="reset-demo">Reset Demo</button>
         </section>
 
@@ -54,7 +54,6 @@
             <p id="child-activity-status" role="status"></p>
             <ol id="child-activity-list"></ol>
         </section>
-    </main>
 <div id="reward-screen" class="hidden">
     <h2>Grant Privilege</h2>
     <p>Select reward allowance</p>
@@ -71,6 +70,7 @@
     <button id="confirm-reward" disabled>Confirm</button>
     <button id="back-dashboard">Back</button>
 </div>
+    </main>
     <script src="../Javascripts/parent-reward-controls.js"></script>
     <script src="../Javascripts/parent-activity-log.js?v=2"></script>
     <script src="../Javascripts/sign-in-and-sign-out.js"></script>

@@ -1,8 +1,8 @@
 let rewards = 
 [
     {id: 1, name: "Language App", status: "Not Selected", image: "../../Images/duolingo.png"},
-    {id: 2, name: "Minecraft", status: "Not Selected", image: "../../Images/minecraft.png"},
-    {id: 3, name: "YouTube", status: "Not Selected", image: "../../Images/youtube.png"},
+    {id: 2, name: "Minecraft", status: "Not Selected", image: "../../Images/Minecraft.png"},
+    {id: 3, name: "YouTube", status: "Not Selected", image: "../../Images/YouTube.png"},
 ];
 
 const reward1 = document.getElementById("reward1");
@@ -23,6 +23,7 @@ reward1.addEventListener('click', () => {
         {
             rewards[0].status = "Selected";
             reward1.classList.add("reward-selected");
+            reward1.setAttribute("aria-pressed", "true");
             reward1.classList.remove("reward-not-selected");
         }
     else if (rewards[0].status === "Selected")
@@ -30,6 +31,7 @@ reward1.addEventListener('click', () => {
             rewards[0].status = "Not Selected";
             reward1.classList.remove("reward-selected");
             reward1.classList.add("reward-not-selected");
+            reward1.setAttribute("aria-pressed", "false");
         }
 });
 
@@ -44,6 +46,7 @@ reward2.addEventListener('click', () => {
         {
             rewards[1].status = "Selected";
             reward2.classList.add("reward-selected");
+            reward2.setAttribute("aria-pressed", "true");
             reward2.classList.remove("reward-not-selected");
         }
     else if (rewards[1].status === "Selected")
@@ -51,6 +54,7 @@ reward2.addEventListener('click', () => {
             rewards[1].status = "Not Selected";
             reward2.classList.remove("reward-selected");
             reward2.classList.add("reward-not-selected");
+            reward2.setAttribute("aria-pressed", "false");
         }
 });
 
@@ -66,6 +70,7 @@ reward3.addEventListener('click', () => {
         {
             rewards[2].status = "Selected";
             reward3.classList.add("reward-selected");
+            reward3.setAttribute("aria-pressed", "true");
             reward3.classList.remove("reward-not-selected");
         }
     else if (rewards[2].status === "Selected")
@@ -73,6 +78,7 @@ reward3.addEventListener('click', () => {
             rewards[2].status = "Not Selected";
             reward3.classList.remove("reward-selected");
             reward3.classList.add("reward-not-selected");
+            reward3.setAttribute("aria-pressed", "false");
         }
 });
 
