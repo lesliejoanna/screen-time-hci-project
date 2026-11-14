@@ -12,7 +12,9 @@ function updateChildStatus() {
 
     if (!statusBadge) return;
 
-    const activeReward = localStorage.getItem("childReward");
+    const activeReward = Number(localStorage.getItem("playtimeMinutes") || 0) > 0
+        || localStorage.getItem("appsUnlocked") === "true"
+        || Number(localStorage.getItem("playtimeEndTime") || 0) > Date.now();
 
     if (activeReward) {
         statusBadge.textContent = "Unlocked";
@@ -25,7 +27,6 @@ function updateChildStatus() {
     }
 }
 
-// Open reward screen
 if (grantRewardButton && rewardScreen) {
     grantRewardButton.addEventListener("click", () => {
         dashboard.classList.add("hidden");
@@ -33,7 +34,6 @@ if (grantRewardButton && rewardScreen) {
     });
 }
 
-// Select reward
 if (rewardScreen && confirmButton) {
     document.querySelectorAll(".reward-option").forEach(button => {
         button.addEventListener("click", () => {
@@ -54,44 +54,87 @@ if (rewardScreen && confirmButton) {
     });
 }
 
-// Back to dashboard
 document.getElementById("back-dashboard")?.addEventListener("click", () => {
     rewardScreen.classList.add("hidden");
     dashboard.classList.remove("hidden");
 });
 
-// Confirm reward
 if (confirmButton && rewardScreen) {
     confirmButton.addEventListener("click", () => {
         if (!selectedReward) return;
 
-        localStorage.setItem("childReward", selectedReward);
+    if (selectedReward === "15 minutes" ||
+        selectedReward === "30 minutes") {
 
-        rewardScreen.classList.add("hidden");
-        dashboard.classList.remove("hidden");
-    });
+        const minutes = parseInt(selectedReward, 10);
+
+        const currentMinutes = Number(
+            localStorage.getItem("playtimeMinutes") || 0
+        );
+
+        localStorage.setItem(
+            "playtimeMinutes",
+            currentMinutes + minutes
+        );
+
+    } else if (selectedReward === "Unlock app") {
+
+        localStorage.setItem("appsUnlocked", "true");
+
+    }
+
+    rewardScreen.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+
+    updateChildStatus();
+    alert("Reward granted successfully!");
+});
 }
 
-// Reset demo
 document.getElementById("reset-demo")?.addEventListener("click", () => {
-    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name", "childActivity"].forEach(key => {
+    [
+        "childReward",
+        "playtimeMinutes",
+        "appsUnlocked",
+        "playtimeEndTime",
+        "screenTimeSetup",
+        "screenTimeSession",
+        "Routine Name",
+        "childActivity"
+    ].forEach(key => {
         localStorage.removeItem(key);
     });
+
+    updateChildStatus();
     selectedReward = null;
-    document.querySelectorAll(".reward-option").forEach(button => button.classList.remove("selected"));
+
+    document.querySelectorAll(".reward-option").forEach(button => {
+        button.classList.remove("selected");
+    });
+
     const selectedText = document.getElementById("selected-reward");
-    if (selectedText) selectedText.textContent = "No reward selected";
-    if (confirmButton) confirmButton.disabled = true;
+    if (selectedText) {
+        selectedText.textContent = "No reward selected";
+    }
+
+    if (confirmButton) {
+        confirmButton.disabled = true;
+    }
+
     alert("Demo reset! Saved profiles, sessions, rewards, and activity history cleared.");
+
     if (window.location.protocol === "file:") {
         window.location.href = "setup.html#reset-demo";
     }
 });
 
-// Next button - Open active hours screen
 if (nextButton && hoursScreen) {
     nextButton.addEventListener("click", () => {
         dashboard.classList.add("hidden");
         hoursScreen.classList.remove("hidden");
     });
 }
+
+window.addEventListener("storage", updateChildStatus);
+window.addEventListener("focus", updateChildStatus);
+updateChildStatus();
