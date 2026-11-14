@@ -1,253 +1,192 @@
-/* General page styling */
+/* ==========================================================================
+   Design tokens: use these variables instead of hard-coded values
+   ========================================================================== */
+:root {
+    /* Brand */
+    --color-primary: #1255b5;
+    --color-primary-hover: #0e4592;
+    --color-primary-active: #0b3674;
+    --color-primary-soft: #dbe7fb;
+    --color-on-primary: #ffffff;
+
+    /* Surfaces and borders */
+    --color-bg: #f4f6fa;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f4f6fa;
+    --color-border: #d5dbe5;
+    --color-border-strong: #7a8699;
+
+    /* Text */
+    --color-text: #1a2433;
+    --color-text-muted: #4a5668;
+    --color-placeholder: #5f6b7a;
+
+    /* States */
+    --color-focus: #1255b5;
+    --color-disabled-bg: #e6e9ef;
+    --color-disabled-text: #5b6575;
+    --color-success: #16723b;
+    --color-success-soft: #e3f5e9;
+    --color-danger: #a11919;
+    --color-danger-soft: #fbe3e3;
+
+    /* Kid dashboard (Swara's palette, used by Kids/child-dashboard.css) */
+    --kid-bg: #f7f5ff;
+    --kid-text: #334155;
+    --kid-purple: #6d28d9;
+    --kid-purple-bright: #7c3aed;
+    --kid-purple-dark: #5b21b6;
+    --kid-purple-darker: #4c1d95;
+    --kid-purple-soft: #ede9fe;
+    --kid-purple-border: #e9d5ff;
+    --kid-header-end: #3b82f6;
+    --kid-blue: #1d4ed8;
+    --kid-blue-soft: #eff6ff;
+    --kid-blue-border: #bfdbfe;
+    --kid-green: #15803d;
+    --kid-green-soft: #f0fdf4;
+    --kid-green-border: #bbf7d0;
+    --kid-amber: #b45309;
+    --kid-amber-soft: #fffbeb;
+    --kid-amber-border: #fde68a;
+    --kid-shadow: 0 8px 24px rgba(109, 40, 217, 0.08);
+    --kid-font-family: "Trebuchet MS", Arial, sans-serif;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 28px;
+    --space-8: 32px;
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 14px;
+    --radius-2xl: 22px;
+    --radius-pill: 999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(26, 36, 51, 0.08);
+    --shadow-md: 0 1px 3px rgba(26, 36, 51, 0.08), 0 4px 12px rgba(26, 36, 51, 0.06);
+
+    /* Type */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 28px;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-heavy: 800;
+    --line-height: 1.5;
+    --line-height-tight: 1.25;
+    --line-height-loose: 1.8;
+
+    /* Sizing */
+    --target-size: 44px;
+    --check-size: 20px;
+    --sidebar-width: 220px;
+    --panel-min-width: 280px;
+    --tile-min-width: 180px;
+    --tile-min-height: 200px;
+    --form-width: 440px;
+    --content-width: 640px;
+    --step-width: 880px;
+    --input-short-width: 8em;
+    --activity-list-height: 360px;
+    --border-width: 1px;
+    --border-width-thick: 2px;
+    --accent-width: 4px;
+    --focus-width: 3px;
+    --focus-offset: 2px;
+    --reward-option-width: 140px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-/* Blue header */
-header {
-    background-color: #1255b5;
-    color: white;
-    padding: 15px 25px;
-}
-
-header h1 {
-    font-size: 22px;
-    margin: 0;
-}
-
-/* Main dashboard layout */
-main {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    min-height: 400px;
-}
-
-/* Left navigation sidebar */
-nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 130px;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height);
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
-/* Buttons */
-button {
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 14px;
+h2,
+h3 {
+    line-height: var(--line-height-tight);
 }
 
-button:hover {
-    background-color: #c5d9f5;
+h3 {
+    margin: var(--space-5) 0 var(--space-2);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
 }
 
-/* Dashboard panels */
-section {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    flex: 1;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+p {
+    margin: 0 0 var(--space-3);
 }
 
-section h2 {
-    font-size: 18px;
-    margin-top: 0;
+a {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
 }
 
-/* Parent Controls buttons */
-#grant-reward {
-    background-color: #d7e7ff;
-    margin-bottom: 10px;
+a:hover {
+    color: var(--color-primary-active);
 }
+
+/* Visible keyboard focus on every button, link and input */
+:focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+}
+
+/* Headings that scripts focus when a step changes don't need a ring */
+[tabindex="-1"]:focus {
+    outline: none;
+}
+
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-#reward-screen {
-    background: white;
-    margin: 25px auto;
-    padding: 25px;
-    max-width: 500px;
-    border-radius: 8px;
+/* ==========================================================================
+   Header
+   ========================================================================== */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: var(--space-4) var(--space-6);
+    box-shadow: var(--shadow-md);
 }
 
-.reward-options {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.reward-option {
-    background: #1685ed;
-    color: white;
-    flex: 1;
-}
-
-.reward-option.selected {
-    background: #07549c;
-    outline: 3px solid #a9d9ff;
-}
-
-#confirm-reward {
-    background: #a66e4d;
-    color: white;
-}
-
-#confirm-reward:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Login Screen */
-
-.login-container {
-    width: calc(100% - 40px);
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.login-options {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.login-options button {
-    flex: 1;
-    min-height: 44px;
-}
-
-#login-form,
-#password-container {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-#password-container.hidden {
-display: none;
-}
-
-#login-form input {
-box-sizing: border-box;
-width: 100%;
-min-height: 44px;
-padding: 10px 12px;
-margin-bottom: 12px;
-}
-
-#login-submit {
-width: 100%;
-min-height: 44px;
-margin-top: 8px;
-}
-
-
-
-/* Routines list section */
-.routines-page {
-    flex-wrap: wrap;
-}
-
-.routines-page nav {
-    flex-shrink: 0;
-}
-
-.routines-page section {
-    flex-basis: 280px;
-    min-width: 0;
-}
-
-#routine-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px;
-    border-radius: 8px;
-    background: #d9d9d9;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 1.5;
-    overflow-wrap: anywhere;
-}
-
-.routine-name {
-    font-weight: 500;
-    color: #000000;
-}
-
-.routine-status-green {
-    align-self: flex-start;
-    padding: 4px 12px;
-    border-radius: 5px;
-    background: #e3f5e9;
-    font-weight: bold;
-    color: #16723b;
-}
-
-/* Sign-up form and login errors */
-#signup-form,
-#signup-passwords {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-#signup-passwords.hidden {
-    display: none;
-}
-
-#signup-form input {
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-}
-
-#signup-submit {
-    width: 100%;
-    min-height: 44px;
-    margin-top: 8px;
-}
-
-.form-error {
-    margin: 0;
-    padding: 10px 12px;
-    border-radius: 5px;
-    background-color: #fbe3e3;
-    color: #a11919;
-}
-
-.form-error.hidden {
-    display: none;
-}
-
-.form-link {
-    margin-top: 16px;
-    text-align: center;
-}
-
-/* Selected Parent/Child toggle */
-.login-options button.active {
-    background-color: #1255b5;
-    color: white;
-}
-
-/* Monitor icon beside the header title */
 header h1 {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
 }
 
 .header-icon {
@@ -256,135 +195,706 @@ header h1 {
     height: 1em;
 }
 
-.routine-status-red {
-    align-self: flex-start;
-    padding: 4px 12px;
-    border-radius: 5px;
-    background: #f8e6e6;
-    font-weight: bold;
-    color: rgb(119, 17, 17);
+/* ==========================================================================
+   Page layout: full-height sidebar, panels that wrap as the window narrows
+   ========================================================================== */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns:
+        calc(var(--sidebar-width) - var(--space-6))
+        repeat(auto-fit, minmax(min(var(--panel-min-width), 100%), 1fr));
+    grid-template-rows: auto auto auto 1fr;
+    align-items: start;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    min-width: 0;
 }
 
+/* Kid dashboard can hide the sidebar during a focused session */
+main:has(> nav.hidden) {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--panel-min-width), 100%), 1fr));
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+nav {
+    grid-row: 1 / -1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: calc(-1 * var(--space-6)) 0 calc(-1 * var(--space-6)) calc(-1 * var(--space-6));
+    padding: var(--space-4) var(--space-3);
+    background-color: var(--color-surface);
+    border-right: var(--border-width) solid var(--color-border);
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+section {
+    min-width: 0;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+section h2 {
+    margin: 0 0 var(--space-4);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ==========================================================================
+   Buttons: primary, secondary, nav and disabled share one set of states
+   ========================================================================== */
+:where(button, .sign-in-link) {
+    --btn-bg: var(--color-surface);
+    --btn-fg: var(--color-primary);
+    --btn-border: var(--color-primary);
+    --btn-bg-hover: var(--color-primary-soft);
+    --btn-fg-hover: var(--color-primary-active);
+    --btn-bg-active: var(--color-primary-soft);
+    --btn-fg-active: var(--color-primary-active);
+}
+
+/* Primary actions */
+:where(#grant-reward, #confirm-reward, #login-submit, #signup-submit, #setup-next,
+       #start-playtime, .create-routine-button, .sign-in-link,
+       .routine-step-actions button:last-child) {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-border: var(--color-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+}
+
+button,
+.sign-in-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--target-size);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--btn-border);
+    border-radius: var(--radius-md);
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.sign-in-link:hover {
+    background-color: var(--btn-bg-hover);
+    color: var(--btn-fg-hover);
+}
+
+button:active,
+.sign-in-link:active {
+    background-color: var(--btn-bg-active);
+    color: var(--btn-fg-active);
+}
+
+/* Disabled, including unfinished features that stay focusable for their tooltip */
+button:disabled,
+button[aria-disabled="true"] {
+    --btn-bg: var(--color-disabled-bg);
+    --btn-fg: var(--color-disabled-text);
+    --btn-border: var(--color-disabled-bg);
+    --btn-bg-hover: var(--color-disabled-bg);
+    --btn-fg-hover: var(--color-disabled-text);
+    --btn-bg-active: var(--color-disabled-bg);
+    --btn-fg-active: var(--color-disabled-text);
+    cursor: not-allowed;
+}
+
+/* "Coming soon" tooltip on unfinished buttons */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + var(--space-1));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-text);
+    color: var(--color-on-primary);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Beside the button, so a sidebar tooltip doesn't cover the item above it */
+nav [data-tooltip]:hover::after,
+nav [data-tooltip]:focus-visible::after {
+    bottom: auto;
+    top: 50%;
+    left: 100%;
+    transform: translate(var(--space-2), -50%);
+}
+
+/* Sidebar buttons, with the current page highlighted */
+nav button {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-text);
+    --btn-border: transparent;
+    justify-content: flex-start;
+    width: 100%;
+    text-align: left;
+}
+
+nav button[aria-current="page"] {
+    --btn-bg: var(--color-primary-soft);
+    --btn-fg: var(--color-primary-active);
+    box-shadow: inset var(--accent-width) 0 0 var(--color-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+nav button[aria-disabled="true"] {
+    --btn-bg: var(--color-disabled-bg);
+    --btn-border: var(--color-disabled-bg);
+    --btn-fg: var(--color-disabled-text);
+}
+
+nav [data-logout] {
+    margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   Form fields: text inputs, labels, checkbox and radio rows
+   ========================================================================== */
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="time"] {
+    min-height: var(--target-size);
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+}
+
+input::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    flex-shrink: 0;
+    width: var(--check-size);
+    height: var(--check-size);
+    margin: 0;
+    accent-color: var(--color-primary);
+}
+
+/* Whole row is the click target, at least 44px tall */
+.setup-fields label:has(> input[type="checkbox"]),
+.choice-list label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--target-size);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    cursor: pointer;
+}
+
+.setup-fields label:has(> input[type="checkbox"]):hover,
+.choice-list label:hover {
+    background-color: var(--color-surface-muted);
+}
+
+.setup-fields label:has(> input:checked),
+.choice-list label:has(> input:checked) {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+}
+
+.choice-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-4) 0 var(--space-6);
+}
+
+/* ==========================================================================
+   Login, sign-up and welcome
+   ========================================================================== */
+.login-container,
+.welcome-page section {
+    width: calc(100% - 2 * var(--space-6));
+    margin: var(--space-8) auto;
+    padding: var(--space-8);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.login-container {
+    max-width: var(--form-width);
+}
+
+.login-container h2,
+.welcome-page h2 {
+    margin: 0 0 var(--space-5);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.login-options {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.login-options button {
+    flex: 1;
+}
+
+/* Selected Parent/Child toggle */
+.login-options button.active {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+#login-form,
+#password-container,
+#signup-form,
+#signup-passwords {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+#login-form label,
+#signup-form label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+#login-form input,
+#signup-form input {
+    width: 100%;
+    margin-bottom: var(--space-3);
+}
+
+#login-submit,
+#signup-submit {
+    width: 100%;
+    margin-top: var(--space-2);
+}
+
+.form-error {
+    margin: 0 0 var(--space-2);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.form-link {
+    margin: var(--space-4) 0 0;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Links in running text get a 44px tap area without changing the line height */
+.form-link a {
+    display: inline-block;
+    padding: var(--space-3) var(--space-1);
+}
+
+.welcome-page {
+    display: block;
+    padding: 0;
+}
+
+.welcome-page section {
+    max-width: var(--content-width);
+}
+
+.welcome-page h3 {
+    font-size: var(--font-size-lg);
+}
+
+.welcome-page p {
+    color: var(--color-text-muted);
+}
+
+.sign-in-link {
+    margin-top: var(--space-3);
+}
+
+/* ==========================================================================
+   Reward screen (Parent Controls)
+   ========================================================================== */
+#reward-screen {
+    grid-column: 2 / -1;
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+#reward-screen h2 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-xl);
+}
+
+.reward-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+}
+
+.reward-option {
+    flex: 1 1 var(--reward-option-width);
+}
+
+.reward-option.selected {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.reward-option.selected::before {
+    content: "\2713";
+}
+
+#selected-reward {
+    font-weight: var(--font-weight-bold);
+}
+
+#confirm-reward {
+    margin-right: var(--space-2);
+}
+
+/* ==========================================================================
+   Routines list (Parents/Routines/mainpage.html)
+   ========================================================================== */
+#routine-list {
+    overflow-wrap: anywhere;
+}
+
+#routine-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#routine-list th {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-border-strong);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+}
+
+#routine-list td {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Status toggles: the dot and the word both carry the state, not just color */
+.routine-status-green,
+.routine-status-red {
+    --btn-border: transparent;
+    border-radius: var(--radius-pill);
+    font-weight: var(--font-weight-bold);
+}
+
+.routine-status-green::before,
+.routine-status-red::before {
+    content: "";
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-pill);
+    background-color: currentColor;
+}
+
+.routine-status-green {
+    --btn-bg: var(--color-success-soft);
+    --btn-fg: var(--color-success);
+    --btn-bg-hover: var(--color-success-soft);
+    --btn-fg-hover: var(--color-success);
+    --btn-bg-active: var(--color-success-soft);
+    --btn-fg-active: var(--color-success);
+}
+
+.routine-status-red {
+    --btn-bg: var(--color-danger-soft);
+    --btn-fg: var(--color-danger);
+    --btn-bg-hover: var(--color-danger-soft);
+    --btn-fg-hover: var(--color-danger);
+    --btn-bg-active: var(--color-danger-soft);
+    --btn-fg-active: var(--color-danger);
+}
+
+.routine-status-green:hover,
+.routine-status-red:hover {
+    border-color: currentColor;
+}
+
+/* Sits in the normal flow, centred under the table (was absolutely positioned) */
 .create-routine-button {
+    display: flex;
+    margin: var(--space-6) auto 0;
+}
+
+/* ==========================================================================
+   Routine setup steps (obligations, pair_rewards, verification)
+   ========================================================================== */
+main.routine-step {
+    display: block;
+    width: 100%;
+    max-width: var(--step-width);
+    margin: 0 auto;
+}
+
+/* Back on the left, the step's main action on the right */
+.routine-step-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.routine-step-actions button:last-child {
+    margin-left: auto;
+}
+
+/* Configure 1: task bars. The script replaces the class, so these target its two class names. */
+.task-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+}
+
+.task-options button {
+    justify-content: flex-start;
+    width: 100%;
+    text-align: left;
+}
+
+.task-options .task-not-selected,
+.task-options .task-selected {
+    min-height: var(--target-size);
+}
+
+.task-options .task-not-selected {
+    --btn-fg: var(--color-text);
+    --btn-border: var(--color-border-strong);
+    --btn-fg-hover: var(--color-text);
+}
+
+.task-options .task-selected {
+    --btn-bg: var(--color-primary);
+    --btn-fg: var(--color-on-primary);
+    --btn-bg-hover: var(--color-primary-hover);
+    --btn-fg-hover: var(--color-on-primary);
+    --btn-bg-active: var(--color-primary-active);
+    --btn-fg-active: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Checkbox-style marker, so selection isn't shown by color alone */
+.task-options .task-not-selected::before,
+.task-options .task-selected::before {
+    content: "";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--check-size);
+    height: var(--check-size);
+    border: var(--border-width-thick) solid currentColor;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+}
+
+.task-options .task-selected::before {
+    content: "\2713";
+}
+
+#isitSelected3::before {
+    content: "+";
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Configure 2: app tiles. The script sets the image inline; these keep it above a readable label. */
+.reward-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--tile-min-width), 100%), 1fr));
+    gap: var(--space-4);
+}
+
+.reward-tiles button {
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: var(--tile-min-height);
+    padding: var(--space-4);
+    border-width: var(--border-width-thick);
+    border-radius: var(--radius-lg);
+    background-size: auto 55% !important;
+    background-position: center 35% !important;
+    background-repeat: no-repeat !important;
+    font-weight: var(--font-weight-bold);
+}
+
+.reward-tiles .reward-not-selected {
+    --btn-fg: var(--color-text);
+    --btn-border: var(--color-border-strong);
+    --btn-fg-hover: var(--color-text);
+}
+
+.reward-tiles .reward-selected {
+    --btn-bg: var(--color-success-soft);
+    --btn-fg: var(--color-success);
+    --btn-border: var(--color-success);
+    --btn-bg-hover: var(--color-success-soft);
+    --btn-fg-hover: var(--color-success);
+    --btn-bg-active: var(--color-success-soft);
+    --btn-fg-active: var(--color-success);
+}
+
+.reward-tiles .reward-selected::after {
+    content: "\2713";
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 50px;
-
-    position: absolute;
-    width: 500px;
-    height: 113px;
-    left: 1100px;    
-    top: 500px;
-    background: #D9D9D9;
-
+    width: var(--space-7);
+    height: var(--space-7);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-success);
+    color: var(--color-on-primary);
 }
 
-.task-selected {
-    background-color: #1685ed;
-}
-
-.task-not-selected {
-    background-color: #e0e0e0;
-
-}
-
-/*Configure 2: Pair Rewards*/
-
-.reward-selected
-{
-    width: 286px;
-    height: 313px;
-    left: 121px;
-    top: 239px;
-
-    background: #14AE5C;
-    border-radius: 20px;
-}
-
-.reward-not-selected
-{
-    width: 286px;
-    height: 313px;
-    left: 121px;
-    top: 239px;
-
-    background: #ae1414;
-    border-radius: 20px;
-}
-
-/* Session setup flow */
-.setup-page {
+#allowance-form {
+    display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
 }
 
-.setup-page nav {
-    flex-shrink: 0;
+#allowance-form label {
+    font-weight: var(--font-weight-bold);
 }
 
+#allowance {
+    width: var(--input-short-width);
+}
+
+/* ==========================================================================
+   Session setup (Parents/setup.html)
+   ========================================================================== */
 .setup-panel {
-    flex-basis: 320px;
-    min-width: 0;
-    max-width: 800px;
-    line-height: 1.5;
+    max-width: var(--step-width);
+}
+
+#setup-progress {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
 }
 
 .setup-fields {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin: 20px 0;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+}
+
+/* Time, number and name fields sit under their label text */
+.setup-panel label:not(:has(> input[type="checkbox"])) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-weight: var(--font-weight-medium);
 }
 
 .setup-panel input:not([type="checkbox"]) {
     display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    min-height: 44px;
-    margin: 8px 0;
-    padding: 10px;
-    font: inherit;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: var(--space-2) 0;
 }
 
 .setup-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
 }
 
-.setup-actions.hidden {
-    display: none;
-}
-
-#setup-next {
-    background: #1255b5;
-    color: white;
-}
-
-#setup-back:disabled {
-    opacity: 0.5;
-    cursor: default;
+#setup-error:not(:empty) {
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger);
+    font-weight: var(--font-weight-medium);
 }
 
 .setup-panel dt {
-    margin-top: 12px;
-    font-weight: bold;
+    margin-top: var(--space-3);
+    font-weight: var(--font-weight-bold);
 }
 
 .setup-panel dd {
     margin-left: 0;
-}
-
-#setup-error {
-    color: #a21c1c;
+    color: var(--color-text-muted);
 }
 
 .setup-reduce-motion *,
@@ -393,4 +903,43 @@ header h1 {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+}
+
+/* ==========================================================================
+   Narrow windows: sidebar moves above the content
+   ========================================================================== */
+@media (max-width: 767px) {
+    main {
+        display: block;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-6);
+        border-right: 0;
+        border-bottom: var(--border-width) solid var(--color-border);
+    }
+
+    nav button {
+        width: auto;
+    }
+
+    nav [data-logout] {
+        margin-top: 0;
+    }
+
+    main > section,
+    #reward-screen {
+        margin-bottom: var(--space-6);
+    }
+
+    .welcome-page section {
+        margin: var(--space-6) auto;
+        padding: var(--space-6);
+    }
+
+    .login-container {
+        padding: var(--space-6);
+    }
 }

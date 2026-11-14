@@ -5,32 +5,41 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Parent Dashboard - Screen Time Manager - Configure 2: Pair Rewards`</title>
+        <title>Parent Dashboard - Screen Time Manager - Configure 2: Pair Rewards</title>
         <link rel="stylesheet" href="../../style.css">
+        <script src="../../Javascripts/account-storage.js"></script>
+        <script>requireRole("parent");</script>
     </head>
 
     <body>
         <header>
-            <h1>Configure 2: Pair Rewards</h1>
+            <h1>
+                <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
+                Configure 2: Pair Rewards
+            </h1>
         </header>
 
-        <div>
-            <button id="reward1" class="reward-not-selected"></button>
-            <button id="reward2" class="reward-not-selected"></button>
-            <button id="reward3" class="reward-not-selected"></button>
-        </div>
+        <main class="routine-step">
+            <section>
+                <div class="reward-tiles">
+                    <button id="reward1" class="reward-not-selected" aria-pressed="false"></button>
+                    <button id="reward2" class="reward-not-selected" aria-pressed="false"></button>
+                    <button id="reward3" class="reward-not-selected" aria-pressed="false"></button>
+                </div>
 
-        <div>
-            <form id="allowance-form">
-                 Allowance: <input type="text" name="Allowance:" id="allowance"> minutes
-            </form>
-        </div>
+                <form id="allowance-form">
+                    <label for="allowance">Allowance:</label> <input type="text" name="Allowance:" id="allowance"> minutes
+                </form>
 
-        <button type="button" onclick="window.location.href='obligations.html'">
-            Back
-        </button>
-        <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
-        <button type="button" onclick="window.location.href='schedule.html'">Next</button>
+                <div class="routine-step-actions">
+                    <button type="button" onclick="window.location.href='obligations.html'">
+                        Back
+                    </button>
+                    <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
+                    <button type="button" onclick="window.location.href='verification.html'">Next</button>
+                </div>
+            </section>
+        </main>
 
         <script src="../../Javascripts/routine-reward-selection.js"></script>
     </body>

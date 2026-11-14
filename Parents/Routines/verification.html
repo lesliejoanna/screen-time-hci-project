@@ -7,28 +7,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Parent Dashboard - Screen Time Manager - Configure 3: Verification</title>
         <link rel="stylesheet" href="../../style.css">
+        <script src="../../Javascripts/account-storage.js"></script>
+        <script>requireRole("parent");</script>
     </head>
 
     <body>
         <header>
-            <h1>Configure 3: Verification</h1>
+            <h1>
+                <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
+                Configure 3: Verification
+            </h1>
         </header>
 
-        <h2>
-            Who Approves Task Completion?
-        </h2>
+        <main class="routine-step">
+            <section>
+                <h2>
+                    Who Approves Task Completion?
+                </h2>
 
-        <div>
-            <form id="verification-form">
-                <input type="radio" name="verification" value="Parent PIN"> Parent PIN<br>
-                <input type="radio" name="verification" value="Parent Sign-Off"> Parent Sign-Off<br>
-                <input type="radio" name="verification" value="Honor System"> Honor System<br>
-            </form>
-        </div>
+                <form id="verification-form" class="choice-list">
+                    <label><input type="radio" name="verification" value="Parent PIN"> Parent PIN</label>
+                    <label><input type="radio" name="verification" value="Parent Sign-Off"> Parent Sign-Off</label>
+                    <label><input type="radio" name="verification" value="Honor System"> Honor System</label>
+                </form>
 
-        <button type="button" onclick="window.location.href='pair_rewards.html'">Back</button>
-        <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
-        <button type="button" onclick="window.location.href='mainpage.html'">Save & Activate Routine</button>
+                <div class="routine-step-actions">
+                    <button type="button" onclick="window.location.href='pair_rewards.html'">Back</button>
+                    <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
+                    <button type="button" onclick="window.location.href='mainpage.html'">Save & Activate Routine</button>
+                </div>
+            </section>
+        </main>
 
         <script src="../../Javascripts/routine-verification.js"></script>
     </body>

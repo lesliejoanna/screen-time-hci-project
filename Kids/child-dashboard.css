@@ -1,41 +1,64 @@
 
 /* ===== CHILD DASHBOARD: PLAYFUL DESIGN ===== */
 
+/* Kid page uses purple as its primary color, so shared buttons and focus rings follow it */
 body.child-dashboard {
-    background: #f7f5ff;
-    color: #334155;
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    --color-primary: var(--kid-purple);
+    --color-primary-hover: var(--kid-purple-dark);
+    --color-primary-active: var(--kid-purple-darker);
+    --color-primary-soft: var(--kid-purple-soft);
+    --color-focus: var(--kid-purple-bright);
+    background: var(--kid-bg);
+    color: var(--kid-text);
+    font-family: var(--kid-font-family);
 }
 
 /* Colorful header */
 .child-dashboard header {
-    background: linear-gradient(110deg, #7c3aed, #3b82f6);
+    background: linear-gradient(110deg, var(--kid-purple-bright), var(--kid-header-end));
 }
 
 .child-dashboard header h1 {
-    color: #ffffff;
+    color: var(--color-on-primary);
 }
 
 /* Sidebar navigation */
 .child-dashboard main > nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    gap: var(--space-3);
 }
 
 .child-dashboard main > nav button {
-    background: #ffffff;
-    color: #6d28d9;
-    border: 2px solid #e9d5ff;
-    border-radius: 14px;
-    padding: 14px 18px;
-    font-weight: 700;
+    --btn-bg: var(--color-surface);
+    --btn-fg: var(--kid-purple);
+    --btn-border: var(--kid-purple-border);
+    --btn-bg-hover: var(--kid-purple-soft);
+    --btn-fg-hover: var(--kid-purple);
+    border-width: var(--border-width-thick);
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-bold);
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .child-dashboard main > nav button:hover {
-    background: #ede9fe;
     transform: translateY(-2px);
+}
+
+.child-dashboard main > nav button[aria-current="page"] {
+    --btn-bg: var(--kid-purple-soft);
+    --btn-fg: var(--kid-purple-darker);
+    --btn-border: var(--kid-purple);
+}
+
+.child-dashboard main > nav button[aria-disabled="true"] {
+    --btn-bg: var(--color-disabled-bg);
+    --btn-fg: var(--color-disabled-text);
+    --btn-border: var(--color-disabled-bg);
+    --btn-bg-hover: var(--color-disabled-bg);
+    --btn-fg-hover: var(--color-disabled-text);
+}
+
+.child-dashboard main > nav button[aria-disabled="true"]:hover {
+    transform: none;
 }
 
 /* Dashboard cards */
@@ -43,83 +66,129 @@ body.child-dashboard {
     min-width: 0;
     min-height: 240px;
     height: fit-content;
-    padding: 28px;
-    background: white;
-    border-radius: 22px;
-    border: 2px solid #ede9fe;
-    box-shadow: 0 8px 24px rgba(109, 40, 217, 0.08);
-    box-sizing: border-box;
+    padding: var(--space-7);
+    background: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    border: var(--border-width-thick) solid var(--kid-purple-soft);
+    box-shadow: var(--kid-shadow);
+    font-size: var(--font-size-lg);
 }
 
 .child-dashboard main > section h2 {
-    margin: 0 0 22px;
-    font-size: 22px;
-    font-weight: 700;
+    margin: 0 0 var(--space-5);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
 }
 
 /* Screen time */
 .child-dashboard main > section:first-of-type {
-    background: #eff6ff;
-    border-color: #bfdbfe;
+    background: var(--kid-blue-soft);
+    border-color: var(--kid-blue-border);
 }
 
 .child-dashboard main > section:first-of-type h2 {
-    color: #1d4ed8;
+    color: var(--kid-blue);
 }
 
 .child-dashboard #dashboard-time {
     display: inline-block;
-    font-size: 23px;
-    font-weight: 800;
-    color: #1d4ed8;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-heavy);
+    color: var(--kid-blue);
 }
 
 /* Task card */
 .child-dashboard main > section:nth-of-type(3) {
-    background: #f0fdf4;
-    border-color: #bbf7d0;
+    background: var(--kid-green-soft);
+    border-color: var(--kid-green-border);
 }
 
 .child-dashboard main > section:nth-of-type(3) h2 {
-    color: #15803d;
+    color: var(--kid-green);
 }
 
 /* Reward card */
 .child-dashboard main > section:last-of-type {
-    background: #fffbeb;
-    border-color: #fde68a;
+    background: var(--kid-amber-soft);
+    border-color: var(--kid-amber-border);
 }
 
 .child-dashboard main > section:last-of-type h2 {
-    color: #b45309;
+    color: var(--kid-amber);
 }
 
 .child-dashboard #reward-message {
-    font-size: 17px;
     line-height: 1.6;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
 
-/* Reward link */
-.child-dashboard #reward-link:not(.hidden) {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 12px;
-    background: #7c3aed;
-    color: white;
+/* App links (reward apps and session apps) as big tappable buttons */
+.child-dashboard .app-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.child-dashboard .app-choices a,
+.child-dashboard #child-apps a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--target-size);
+    padding: var(--space-3) var(--space-5);
+    border: var(--border-width-thick) solid var(--kid-purple-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    color: var(--kid-purple);
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
-    font-weight: 700;
 }
 
-.child-dashboard #reward-link.hidden {
-    display: none;
+.child-dashboard .app-choices a:hover,
+.child-dashboard #child-apps a:hover {
+    background: var(--kid-purple-soft);
+    color: var(--kid-purple-darker);
+}
+
+/* Link inside the "no session" message gets a 44px tap area */
+.child-dashboard #session-empty a {
+    display: inline-block;
+    padding: var(--space-3) var(--space-1);
+}
+
+.child-dashboard #start-playtime {
+    margin-bottom: var(--space-3);
 }
 
 /* Session controls */
 .child-dashboard #child-session button {
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-weight: 600;
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 var(--space-2) var(--space-2) 0;
+}
+
+.child-dashboard #child-wind-down {
+    margin-bottom: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--kid-amber-soft);
+    color: var(--kid-amber);
+    font-weight: var(--font-weight-bold);
+}
+
+.child-dashboard #child-end-error {
+    color: var(--color-danger);
+}
+
+.child-dashboard #activity-notice {
+    grid-column: 2 / -1;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.child-dashboard main:has(> nav.hidden) #activity-notice {
+    grid-column: 1 / -1;
 }
 
 /* Keep hidden content hidden */
@@ -129,15 +198,16 @@ body.child-dashboard {
 
 /* Keyboard accessibility */
 .child-dashboard button:focus-visible,
-.child-dashboard a:focus-visible {
-    outline: 3px solid #7c3aed;
+.child-dashboard a:focus-visible,
+.child-dashboard input:focus-visible {
+    outline: var(--focus-width) solid var(--kid-purple-bright);
     outline-offset: 3px;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
     .child-dashboard main > section {
-        padding: 20px;
+        padding: var(--space-5);
     }
 }
 
