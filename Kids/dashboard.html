@@ -24,6 +24,10 @@
         </nav>
         <section>
             <h2>My Screen Time</h2>
+            <p>Available Playtime: <span id="available-minutes">0</span> minutes</p>
+            <p>Status: <span id="playtime-status">Locked</span></p>
+            <p id="countdown-display" class="hidden">Time Remaining: <span id="countdown">00:00</span></p>
+            <button id="start-playtime" class="hidden">Start Playtime</button>
             <p><span id="dashboard-time">No active session</span></p>
             <p id="dashboard-status">Status: Locked</p>
             <p id="session-empty">No session was received. Ask your parent to finish <a href="../Parents/setup.html">Setup</a> and choose “Deploy to Child Session” in this browser.</p>
@@ -57,44 +61,93 @@
                 No rewards available yet.
             </p>
 
-            <div id="reward-content" class="hidden">
-                <p id="reward-description"></p>
+            <div id="app-options" class="hidden">
+                <h3>Choose an App</h3>
+                <p>Your parent has unlocked an app! Choose one to open:</p>
 
-                <a id="reward-link"
-                data-activity-app="YouTube Kids"
-                href="https://www.youtubekids.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hidden">
-                    Open YouTube Kids
-                </a>
+
+                <div class="app-choices">
+                    <a href="https://www.youtubekids.com/" target="_blank" rel="noopener noreferrer">YouTube Kids</a>
+                    <a href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer">Minecraft</a>
+                    <a href="https://www.duolingo.com/" target="_blank" rel="noopener noreferrer">Duolingo</a>
+                    <a href="https://www.coolmathgames.com/" target="_blank" rel="noopener noreferrer">Coolmath Games</a>
+                </div>                
             </div>
         </section>
         <p id="activity-notice">Dashboard departures and returns are recorded for your parent.</p>
     </main>
 
+    
     <script>
-        const savedReward = localStorage.getItem("childReward");
-
+        const availableMinutes = document.getElementById("available-minutes");
+        const playtimeStatus = document.getElementById("playtime-status");
+        const countdownDisplay = document.getElementById("countdown-display");
+        const countdown = document.getElementById("countdown");
+        const startButton = document.getElementById("start-playtime");
         const rewardMessage = document.getElementById("reward-message");
-        const rewardContent = document.getElementById("reward-content");
-        const rewardDescription = document.getElementById("reward-description");
-        const rewardLink = document.getElementById("reward-link");
+        const appOptions = document.getElementById("app-options");
 
-        if (savedReward) {
-            rewardMessage.textContent = "Your parent approved a reward!";
-            rewardContent.classList.remove("hidden");
+        function updateDashboard() {
+            const minutes = Number(localStorage.getItem("playtimeMinutes") || 0);
+            const appsUnlocked = localStorage.getItem("appsUnlocked") === "true";
+            const endTime = Number(localStorage.getItem("playtimeEndTime") || 0);
 
-            if (savedReward === "Unlock app") {
-                rewardDescription.textContent = "YouTube Kids is now unlocked!";
-                rewardLink.classList.remove("hidden");
+            availableMinutes.textContent = minutes;
+            appOptions.classList.toggle("hidden", !appsUnlocked);
+
+            if (appsUnlocked || minutes > 0 || endTime > 0) {
+                rewardMessage.textContent = "Your parent approved a reward!";
             } else {
-                rewardDescription.textContent =
-                    `You received: ${savedReward}`;
+                rewardMessage.textContent = "No rewards available yet.";
+            }
+
+            if (endTime > 0) {
+                const remaining = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
+
+                if (remaining > 0) {
+                    const mins = Math.floor(remaining / 60);
+                    const secs = remaining % 60;
+
+                    countdown.textContent =
+                        `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+                    countdownDisplay.classList.remove("hidden");
+                    startButton.classList.add("hidden");
+                    playtimeStatus.textContent = "Playing";
+                } else {
+                    localStorage.removeItem("playtimeEndTime");
+                    countdownDisplay.classList.add("hidden");
+                    playtimeStatus.textContent = "Playtime finished!";
+                    updateDashboard();
+                }
+            } else {
+                countdownDisplay.classList.add("hidden");
+                playtimeStatus.textContent = "Locked";
+                startButton.classList.toggle("hidden", minutes <= 0);
             }
         }
+
+        startButton.addEventListener("click", () => {
+            const minutes = Number(localStorage.getItem("playtimeMinutes") || 0);
+
+            if (minutes <= 0) {
+                return;
+            }
+
+            const endTime = Date.now() + minutes * 60 * 1000;
+
+            localStorage.setItem("playtimeEndTime", endTime);
+            localStorage.setItem("playtimeMinutes", "0");
+
+            updateDashboard();
+        });
+
+        updateDashboard();
+        setInterval(updateDashboard, 1000);
     </script>
 
+
+    <script src="../Javascripts/login.js"></script>
     <script src="../Javascripts/child-session-controls.js?v=2"></script>
     <script src="../Javascripts/child-activity-tracker.js?v=2"></script>
     <script src="../Javascripts/sign-in-and-sign-out.js"></script>

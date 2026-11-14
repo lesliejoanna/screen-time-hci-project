@@ -65,24 +65,63 @@ if (confirmButton && rewardScreen) {
     confirmButton.addEventListener("click", () => {
         if (!selectedReward) return;
 
-        localStorage.setItem("childReward", selectedReward);
+    if (selectedReward === "15 minutes" ||
+        selectedReward === "30 minutes") {
+        
+        const minutes = parseInt(selectedReward, 10);
+        
+        const currentMinutes = Number(
+            localStorage.getItem("playtimeMinutes") || 0
+        );
 
-        rewardScreen.classList.add("hidden");
-        dashboard.classList.remove("hidden");
-    });
-}
+        localStorage.setItem(
+            "playtimeMinutes",
+            currentMinutes + minutes
+        );
 
-// Reset demo
+    } else if (selectedReward === "Unlock app") {
+        
+        localStorage.setItem("appsUnlocked", "true");
+
+    }
+
+    rewardScreen.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+
+    alert("Reward granted successfully!");
+});
+
 document.getElementById("reset-demo")?.addEventListener("click", () => {
-    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name", "childActivity"].forEach(key => {
+    [
+        "childReward",
+        "playtimeMinutes",
+        "appsUnlocked",
+        "playtimeEndTime",
+        "screenTimeSetup",
+        "screenTimeSession",
+        "Routine Name",
+        "childActivity"
+    ].forEach(key => {
         localStorage.removeItem(key);
     });
+
     selectedReward = null;
-    document.querySelectorAll(".reward-option").forEach(button => button.classList.remove("selected"));
+
+    document.querySelectorAll(".reward-option").forEach(button => {
+        button.classList.remove("selected");
+    });
+
     const selectedText = document.getElementById("selected-reward");
-    if (selectedText) selectedText.textContent = "No reward selected";
-    if (confirmButton) confirmButton.disabled = true;
+    if (selectedText) {
+        selectedText.textContent = "No reward selected";
+    }
+
+    if (confirmButton) {
+        confirmButton.disabled = true;
+    }
+
     alert("Demo reset! Saved profiles, sessions, rewards, and activity history cleared.");
+
     if (window.location.protocol === "file:") {
         window.location.href = "setup.html#reset-demo";
     }
