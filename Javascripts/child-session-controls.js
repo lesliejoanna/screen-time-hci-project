@@ -109,6 +109,7 @@
         const link = document.createElement('a');
         link.id = key;
         link.textContent = name;
+        link.dataset.activityApp = name;
         link.href = url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';

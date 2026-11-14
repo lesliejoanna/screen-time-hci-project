@@ -26,7 +26,11 @@
             time.dateTime = event.timestamp;
             time.textContent = new Date(event.timestamp).toLocaleString();
             const description = document.createElement('span');
-            description.textContent = `${event.username}: ${event.active ? 'Opened or returned to dashboard' : 'Left dashboard'} — ${event.reason}`;
+            if (event.type === 'app-click') {
+                description.textContent = `${event.username}: ${event.reason}`;
+            } else {
+                description.textContent = `${event.username}: ${event.active ? 'Opened or returned to dashboard' : 'Left dashboard'} — ${event.reason}`;
+            }
             row.append(time, description);
             activityList.append(row);
         });
