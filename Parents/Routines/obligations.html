@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Parent Dashboard - Screen Time Manager - Configure 1: Obligations</title>
+        <link rel="stylesheet" href="../../style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Configure 1: Obligations</h1>
+        </header>
+
+        <h1>
+            Select Required Tasks:
+        </h1>
+
+        <div>
+            <button id="isitSelected1" class="task-not-selected"></button>   <!-- For this button, make it match to the database of tasks the user added-->
+            <button id="isitSelected2" class="task-not-selected"></button>   <!-- For this button, make it match to the database of tasks the user added-->
+            <button id="isitSelected3">Add Custom Task</button>   <!-- Add some sort of popup to access the tasks database and have the user create some tasks. Oh, and add the crosshair button -->
+        </div>
+
+        <button type="button" onclick="window.location.href='mainpage.html'">Back</button>
+        <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
+        <button type="button" onclick="window.location.href='pair_rewards.html'">Next</button>
+
+        <script src="../../Javascripts/routine-task-selection.js"></script>
+    </body>
+
+</html>

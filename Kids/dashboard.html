@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Child Dashboard - Screen Time Manager</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="child-dashboard.css">
+    <script src="../Javascripts/account-storage.js"></script>
+    <script>requireRole("child");</script>
 </head>
-<body>
+<body class="child-dashboard">
     <header>
-        <h1>Screen Time Manager</h1>
+        <h1>
+            <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
+            Screen Time Manager
+        </h1>
     </header>
     <main>
         <nav>
@@ -22,6 +28,26 @@
             <p>Status: <span id="playtime-status">Locked</span></p>
             <p id="countdown-display" class="hidden">Time Remaining: <span id="countdown">00:00</span></p>
             <button id="start-playtime" class="hidden">Start Playtime</button>
+            <p><span id="dashboard-time">No active session</span></p>
+            <p id="dashboard-status">Status: Locked</p>
+            <p id="session-empty">No session was received. Ask your parent to finish <a href="../Parents/setup.html">Setup</a> and choose “Deploy to Child Session” in this browser.</p>
+        </section>
+        <section id="child-session" class="hidden">
+            <h2 id="child-profile">My Session</h2>
+            <p id="child-schedule"></p>
+            <div id="child-wind-down" class="hidden" role="status">Wind down: finish your activity and get ready for a break.</div>
+            <p id="child-cue" role="status"></p>
+            <button type="button" id="enable-chime">Enable Audio Chime</button>
+            <h3>Allowed apps</h3>
+            <div id="child-apps" class="setup-fields"></div>
+            <p>App access is simulated here. Open websites are not controlled by this prototype.</p>
+            <button type="button" id="child-end">End Session Early</button>
+            <div id="child-end-confirmation" class="hidden">
+                <label>Parent PIN (1234) <input id="child-pin" type="password" inputmode="numeric" maxlength="4"></label>
+                <button type="button" id="child-confirm-end">Confirm End</button>
+                <button type="button" id="child-cancel-end">Cancel</button>
+                <p id="child-end-error" role="alert"></p>
+            </div>
         </section>
         <section>
             <h2>My Tasks</h2>
@@ -48,6 +74,7 @@
                 </div>                
             </div>
         </section>
+        <p id="activity-notice">Dashboard departures and returns are recorded for your parent.</p>
     </main>
 
     
@@ -121,5 +148,8 @@
 
 
     <script src="../Javascripts/login.js"></script>
+    <script src="../Javascripts/child-session-controls.js?v=2"></script>
+    <script src="../Javascripts/child-activity-tracker.js?v=2"></script>
+    <script src="../Javascripts/sign-in-and-sign-out.js"></script>
 </body>
 </html>

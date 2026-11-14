@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parent Dashboard - Screen Time Manager</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="controls.css">
+    <script src="../Javascripts/account-storage.js"></script>
+    <script>requireRole("parent");</script>
 </head>
 
 <body>
-    <header>
-        <h1>Screen Time Manager</h1>
-    </header>
 
+    <header>
+        <h1>
+            <svg class="header-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="3" width="22" height="15" rx="2" fill="#ffffff"/><rect x="3" y="5" width="18" height="11" fill="#0b2545"/><rect x="10" y="18" width="4" height="3" fill="#ffffff"/><rect x="6" y="20" width="12" height="2" rx="1" fill="#ffffff"/></svg>
+            Screen Time Manager
+        </h1>
+    </header>
     <main>
         <nav>
             <button onclick="window.location.href='controls.html'">Controls</button>
-            <button onclick="window.location.href='routines.html'">Routines</button>
+            <button onclick="window.location.href='Routines/mainpage.html'">Routines</button>
             <button onclick="window.location.href='setup.html'">Setup</button>
             <button type="button" data-logout>Log Out</button>
         </nav>
@@ -29,8 +35,24 @@
 
         <section>
             <h2>Child Status</h2>
-            <p>Homework: Completed</p>
-            <p>Status: Locked</p>
+
+ <div class="status-row">
+    <span>Homework</span>
+    <span class="status-badge completed">Completed</span>
+</div>
+
+<div class="status-row">
+    <span>Screen Time</span>
+    <span class="status-badge locked" id="child-lock-status">Locked</span>
+</div>
+
+        </section>
+        <section class="child-activity-panel">
+            <h2>Child Dashboard Activity</h2>
+            <p>Records when the child dashboard loses focus or becomes hidden, and when the child returns. This includes opening allowed apps.</p>
+            <p>History is shared only within this browser and site. Closing or switching apps does not reveal which app was opened.</p>
+            <p id="child-activity-status" role="status"></p>
+            <ol id="child-activity-list"></ol>
         </section>
     </main>
 <div id="reward-screen" class="hidden">
@@ -49,7 +71,8 @@
     <button id="confirm-reward" disabled>Confirm</button>
     <button id="back-dashboard">Back</button>
 </div>
-    <script src="../Javascripts/script.js"></script>
-    <script src="../Javascripts/login.js"></script>
+    <script src="../Javascripts/parent-reward-controls.js"></script>
+    <script src="../Javascripts/parent-activity-log.js?v=2"></script>
+    <script src="../Javascripts/sign-in-and-sign-out.js"></script>
 </body>
 </html>
