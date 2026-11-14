@@ -36,13 +36,36 @@ confirmButton.addEventListener("click", () => {
         return;
     }
 
-    localStorage.setItem("childReward", selectedReward);
+    if (selectedReward === "15 minutes" ||
+        selectedReward === "30 minutes") {
+        
+        const minutes = parseInt(selectedReward, 10);
+        
+        const currentMinutes = Number(
+            localStorage.getItem("playtimeMinutes") || 0
+        );
+
+        localStorage.setItem(
+            "playtimeMinutes",
+            currentMinutes + minutes
+        );
+
+    } else if (selectedReward === "Unlock app") {
+        
+        localStorage.setItem("appsUnlocked", "true");
+
+    }
 
     rewardScreen.classList.add("hidden");
     dashboard.classList.remove("hidden");
-})
+
+    alert("Reward granted successfully!");
+});
 
 document.getElementById("reset-demo").addEventListener("click", () => {
     localStorage.removeItem("childReward");
+    localStorage.removeItem("playtimeMinutes");
+    localStorage.removeItem("appsUnlocked");
+    localStorage.removeItem("playtimeEndTime");
     alert("Demo reset! Child rewards cleared.");
 });
