@@ -129,26 +129,37 @@ async function verifyLogin(username, password, role) {
 }
 
 function setCurrentUser(account) {
-    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify({
+    const user = JSON.stringify({
         id: account.id,
         username: account.username,
         role: account.role
-    }));
+    });
+    sessionStorage.setItem(CURRENT_USER_KEY, user);
+    localStorage.setItem(CURRENT_USER_KEY, user);
 }
 
 // Reads the account back from the store so a stale currentUser doesn't count.
 function getCurrentUser() {
-    const current = readJson(CURRENT_USER_KEY, null);
+    let current;
+    try {
+        const savedUser = sessionStorage.getItem(CURRENT_USER_KEY);
+        current = savedUser ? JSON.parse(savedUser) : readJson(CURRENT_USER_KEY, null);
+    } catch {
+        current = null;
+    }
     const account = current && getAccounts().find(item => item.id === current.id);
 
     if (!account) {
         return null;
     }
 
-    return { id: account.id, username: account.username, role: account.role };
+    const user = { id: account.id, username: account.username, role: account.role };
+    sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    return user;
 }
 
 function logout() {
+    sessionStorage.removeItem(CURRENT_USER_KEY);
     localStorage.removeItem(CURRENT_USER_KEY);
 }
 

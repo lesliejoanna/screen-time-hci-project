@@ -60,3 +60,24 @@ main > section p {
     color: #176b35;
 
 }
+
+.child-activity-panel {
+    min-width: 0;
+}
+
+#child-activity-list {
+    max-height: 360px;
+    overflow-y: auto;
+    padding-left: 24px;
+}
+
+#child-activity-list li {
+    margin-bottom: 16px;
+    overflow-wrap: anywhere;
+}
+
+#child-activity-list time {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}

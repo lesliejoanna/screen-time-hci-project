@@ -47,6 +47,13 @@
 </div>
 
         </section>
+        <section class="child-activity-panel">
+            <h2>Child Dashboard Activity</h2>
+            <p>Records when the child dashboard loses focus or becomes hidden, and when the child returns. This includes opening allowed apps.</p>
+            <p>History is shared only within this browser and site. Closing or switching apps does not reveal which app was opened.</p>
+            <p id="child-activity-status" role="status"></p>
+            <ol id="child-activity-list"></ol>
+        </section>
     </main>
 <div id="reward-screen" class="hidden">
     <h2>Grant Privilege</h2>
@@ -65,6 +72,7 @@
     <button id="back-dashboard">Back</button>
 </div>
     <script src="../Javascripts/script.js"></script>
+    <script src="../Javascripts/parent-activity.js"></script>
     <script src="../Javascripts/login.js"></script>
 </body>
 </html>

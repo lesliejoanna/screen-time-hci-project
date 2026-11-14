@@ -1,6 +1,6 @@
 const setup = (() => {
     if (window.location.hash === '#reset-demo') {
-        ['childReward', 'screenTimeSetup', 'screenTimeSession', 'Routine Name'].forEach(key => localStorage.removeItem(key));
+        ['childReward', 'screenTimeSetup', 'screenTimeSession', 'Routine Name', 'childActivity'].forEach(key => localStorage.removeItem(key));
         window.location.replace('../Kids/dashboard.html#reset-demo');
         return;
     }

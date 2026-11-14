@@ -74,7 +74,7 @@ if (confirmButton && rewardScreen) {
 
 // Reset demo
 document.getElementById("reset-demo")?.addEventListener("click", () => {
-    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name"].forEach(key => {
+    ["childReward", "screenTimeSetup", "screenTimeSession", "Routine Name", "childActivity"].forEach(key => {
         localStorage.removeItem(key);
     });
     selectedReward = null;
@@ -82,7 +82,7 @@ document.getElementById("reset-demo")?.addEventListener("click", () => {
     const selectedText = document.getElementById("selected-reward");
     if (selectedText) selectedText.textContent = "No reward selected";
     if (confirmButton) confirmButton.disabled = true;
-    alert("Demo reset! Saved profiles, sessions, and rewards cleared.");
+    alert("Demo reset! Saved profiles, sessions, rewards, and activity history cleared.");
     if (window.location.protocol === "file:") {
         window.location.href = "setup.html#reset-demo";
     }
