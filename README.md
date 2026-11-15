@@ -104,9 +104,11 @@ Activity updates between open tabs on the same browser profile and site. Parents
 - Routine task choices are predefined; Add Custom Task is a placeholder. Custom Reward is also a placeholder.
 - Daily schedules are descriptive saved settings, not automatic recurring execution. Routine rewards are one-time per saved routine.
 
-## Optional local testing
+## Local testing
 
-If Python 3 is already installed, open a terminal in the project root—the folder containing `index.html`—and run:
+Optionally, to test the prototype locally, simply use Python 3 to host it
+
+If Python 3 is already installed, open a terminal in the project root and run:
 
 ```bash
 python3 -m http.server 8000
