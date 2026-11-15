@@ -943,3 +943,23 @@ main.routine-step {
         padding: var(--space-6);
     }
 }
+
+.routine-card {
+    margin: 16px 0;
+    padding: 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+}
+
+.routine-card label,
+.routine-card a {
+    display: block;
+    margin: 10px 0;
+}
+
+.routine-step input,
+.routine-step select {
+    padding: 10px;
+    margin: 8px;
+    max-width: 100%;
+}

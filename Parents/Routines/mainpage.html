@@ -46,27 +46,17 @@
                         </tr>
 
                     </thead>
-                    <tbody id="routine-table-body">
-                        <!-- Routine rows will be dynamically added here, but for now let's hardcode some -->
-                        <tr>
-                            <td>Morning Routine</td>
-                            <td><button id="isitactive" class="routine-status-green">Active</button></td>
-                        </tr>
-
-                        <tr>
-                            <td>After School</td>
-                            <td><button id="isitactive2" class="routine-status-red">Inactive</button></td>
-                        </tr>
-
-                    </tbody>
+                    <tbody id="routine-table-body"></tbody>
 
                 </table>
             </div>
-            <button class="create-routine-button" onclick="window.location.href='obligations.html'">+ Create New Routine</button>   
+            <p id="routine-empty" role="status"></p>
+            <button id="create-routine" class="create-routine-button">+ Create New Routine</button>
 
         </section>
 
     </main>
+    <script src="../../Javascripts/routine-storage.js"></script>
     <script src="../../Javascripts/routine-status.js"></script>
     <script src="../../Javascripts/sign-in-and-sign-out.js"></script>
 </body>

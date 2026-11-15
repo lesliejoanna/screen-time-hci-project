@@ -18,12 +18,11 @@
     </header>
     <main>
         <nav>
-            <button type="button" aria-current="page">Dashboard</button>
-            <button type="button" aria-disabled="true" aria-label="Routines, coming soon" data-tooltip="Coming soon">Routines</button>
+            <button id="child-dashboard-tab" type="button" aria-current="page">Dashboard</button>
             <button type="button" data-logout>Log Out</button>
         </nav>
         <section>
-            <h2>My Screen Time</h2>
+            <h2 id="child-dashboard-heading" tabindex="-1">My Screen Time</h2>
             <p>Available Playtime: <span id="available-minutes">0</span> minutes</p>
             <p>Status: <span id="playtime-status">Locked</span></p>
             <p id="countdown-display" class="hidden">Time Remaining: <span id="countdown">00:00</span></p>
@@ -50,8 +49,8 @@
             </div>
         </section>
         <section>
-            <h2>My Tasks</h2>
-            <p>Homework: Completed</p>
+            <h2 id="child-routines-heading" tabindex="-1">My Routines and Tasks</h2>
+            <div id="child-routines"></div>
             <p>Rewards Earned: See My Rewards below</p>
         </section>
         <section>
@@ -147,6 +146,8 @@
     </script>
 
 
+    <script src="../Javascripts/routine-storage.js"></script>
+    <script src="../Javascripts/child-routines.js"></script>
     <script src="../Javascripts/child-session-controls.js?v=2"></script>
     <script src="../Javascripts/child-activity-tracker.js?v=2"></script>
     <script src="../Javascripts/sign-in-and-sign-out.js"></script>

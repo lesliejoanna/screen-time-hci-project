@@ -28,20 +28,22 @@
                 </div>
 
                 <form id="allowance-form">
-                    <label for="allowance">Allowance:</label> <input type="text" name="Allowance:" id="allowance"> minutes
+                    <label for="allowance">Allowance:</label> <input type="number" min="1" max="180" step="1" required name="Allowance:" id="allowance"> minutes
                 </form>
 
+                <p id="routine-error" role="alert"></p>
                 <div class="routine-step-actions">
                     <button type="button" onclick="window.location.href='obligations.html'">
                         Back
                     </button>
                     <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
-                    <button type="button" onclick="window.location.href='verification.html'">Next</button>
+                    <button type="button" id="routine-next">Next</button>
                 </div>
             </section>
         </main>
 
-        <script src="../../Javascripts/routine-reward-selection.js"></script>
+        <script src="../../Javascripts/routine-storage.js"></script>
+    <script src="../../Javascripts/routine-reward-selection.js"></script>
     </body>
 
 </html>

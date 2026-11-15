@@ -103,13 +103,14 @@ document.getElementById("reset-demo")?.addEventListener("click", () => {
         "playtimeEndTime",
         "screenTimeSetup",
         "screenTimeSession",
-        "Routine Name",
+        "Routine Name", "savedRoutines",
         "childActivity"
     ].forEach(key => {
         localStorage.removeItem(key);
     });
 
     updateChildStatus();
+    sessionStorage.removeItem("routineDraft");
     selectedReward = null;
 
     document.querySelectorAll(".reward-option").forEach(button => {

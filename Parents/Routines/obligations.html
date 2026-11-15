@@ -25,21 +25,25 @@
                     Select Required Tasks:
                 </h2>
 
+                <label>Routine name <input id="routine-name" maxlength="80" required></label>
+                <label>Assign to child <select id="routine-child"></select></label>
                 <div class="task-options">
-                    <button id="isitSelected1" class="task-not-selected" aria-pressed="false"></button>   <!-- For this button, make it match to the database of tasks the user added-->
-                    <button id="isitSelected2" class="task-not-selected" aria-pressed="false"></button>   <!-- For this button, make it match to the database of tasks the user added-->
-                    <button id="isitSelected3" type="button" aria-disabled="true" aria-label="Add Custom Task, coming soon" data-tooltip="Coming soon">Add Custom Task</button>   <!-- Add some sort of popup to access the tasks database and have the user create some tasks. Oh, and add the crosshair button -->
+                    <button id="isitSelected1" class="task-not-selected" aria-pressed="false"></button>
+                    <button id="isitSelected2" class="task-not-selected" aria-pressed="false"></button>
+                    <button id="isitSelected3" type="button" aria-disabled="true" aria-label="Add Custom Task, coming soon" data-tooltip="Coming soon">Add Custom Task</button>
                 </div>
 
+                <p id="routine-error" role="alert"></p>
                 <div class="routine-step-actions">
                     <button type="button" onclick="window.location.href='mainpage.html'">Back</button>
                     <button type="button" onclick="window.location.href='mainpage.html'">Back To Routines</button>
-                    <button type="button" onclick="window.location.href='pair_rewards.html'">Next</button>
+                    <button type="button" id="routine-next">Next</button>
                 </div>
             </section>
         </main>
 
-        <script src="../../Javascripts/routine-task-selection.js"></script>
+        <script src="../../Javascripts/routine-storage.js"></script>
+    <script src="../../Javascripts/routine-task-selection.js"></script>
     </body>
 
 </html>
